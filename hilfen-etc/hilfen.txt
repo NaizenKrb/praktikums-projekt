@@ -1,0 +1,7 @@
+Kalender mit JS: https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/Monatskalender
+Noch ein BSP.: http://www.mrknowing.com/2013/07/25/eigenen-html-kalender-erstellen-html-und-javascript/
+Tabellen: https://wiki.selfhtml.org/wiki/HTML/Tabellen/Aufbau_einer_Tabelle
+TailwindCss: https://tailwindcss.com/docs/installation/play-cdn
+HeroIcons: https://heroicons.com/
+TailwindComponents: https://tailwindcomponents.com/components/tabs
+Button: https://tailwindcomponents.com/component/buttons

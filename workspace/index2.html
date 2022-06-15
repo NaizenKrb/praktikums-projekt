@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de" class="test">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="HandheldFriendly" content="True">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Kalender</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" async src="js/script.js"></script>
+</head>
+
+<body class="bg-gray-100">
+  <header class="m-0 border-b-4 border-gray-700">
+    <div class="flex justify-evenly items-center p-3">
+      <button class="p-1 rounded-full border-2 h-full bg-blue-400 hover:bg-slate-200 active:bg-slate-400" id="last">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+      <div class="p-5 h-full" id="month"></div>
+      <button class="p-1 rounded-full border-2 h-full bg-blue-400 hover:bg-slate-200 active:bg-slate-400" id="next">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="m-32 border-4 border-gray-700 rounded-lg" id="calendar">
+
+      <div class="grid grid-cols-7 text-center bg-blue-400" id="table-header">
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            Mo.
+        </div>
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            Di.
+        </div>
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            Mi.
+        </div>
+        <div class="p-4  border border-gray-700 border-b-2 truncate">
+            Do.
+        </div>
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            Fr.
+        </div>
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            Sa.
+        </div>
+        <div class="p-4 border border-gray-700 border-b-2 truncate">
+            So.
+        </div>
+    </div>
+
+      <div class="grid grid-cols-7" id="days">
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    1.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    2.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    3.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    4.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    5.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    6.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate" >
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    7.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+            <div class="border border-gray-700">
+                <div class="border-b border-gray-700 py-1 px-3">
+                    8.
+                </div>
+                <div class="py-1 px-3 h-24">
+                    <div class="truncate text-blue-500">
+                        NH
+                    </div>
+                    <div class="truncate">
+                        NG
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>
