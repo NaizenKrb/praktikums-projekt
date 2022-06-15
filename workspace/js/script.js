@@ -1,6 +1,9 @@
-const month = ["Januar","Februar","Maerz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+const month = ["Januar","Februar","Maerz","April",
+                "Mai","Juni","Juli","August","September",
+                "Oktober","November","Dezember"];
+
 const d = new Date();
-var month_index = d.getMonth()
+var month_index = d.getMonth();
 const current_month = month[month_index];
 
 
@@ -22,4 +25,4 @@ function lastMonth() {
         month_index -= 1;
     }
     document.getElementById("month").innerHTML = month[month_index];
-};
+}
