@@ -1,1 +1,1 @@
-# prakitkums-projekt
+# praktikums-projekt
