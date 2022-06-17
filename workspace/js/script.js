@@ -1,28 +1,57 @@
-const month = ["Januar","Februar","Maerz","April",
+const months = ["Januar","Februar","Maerz","April",
                 "Mai","Juni","Juli","August","September",
                 "Oktober","November","Dezember"];
 
+const weekDays = ["Montag","Dienstag","Mittwoch",
+                "Donnerstag","Freitag","Samstag",
+                "Sonntag"];
+
 const d = new Date();
-var month_index = d.getMonth();
-const current_month = month[month_index];
+var monthIndex = d.getMonth();
+var year = d.getFullYear()
+const currentMonth = months[monthIndex];
 
 
-document.getElementById("month").innerHTML = current_month;
+document.getElementById("month").innerHTML = currentMonth + " " + year;
 
 document.getElementById("next").onclick = function() {nextMonth()};
 document.getElementById("last").onclick = function() {lastMonth()};
 
 
 function nextMonth() {
-    if (month_index < 11) {
-        month_index += 1;
+    if (monthIndex < 11) {
+        monthIndex += 1;
     }
-    document.getElementById("month").innerHTML = month[month_index];
-};
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
+}
 
 function lastMonth() {
-    if (month_index > 0) {
-        month_index -= 1;
+    if (monthIndex > 0) {
+        monthIndex -= 1;
     }
-    document.getElementById("month").innerHTML = month[month_index];
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
 }
+
+
+const date = new Date();
+const currentYear = date.getFullYear();
+const currentDay = date.getDate();
+
+const monthIndex2 = date.getMonth();
+const currentMonth2 = months[monthIndex2];
+
+
+const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex2);
+const weekDay = getWeekDay();
+
+function getDaysInMonth(year, month) {
+    return new Date(year, month, 0).getDate();
+}
+
+function getWeekDay() {
+    const weekdayIndex = date.getDay() - 1;
+    return weekDays[weekdayIndex];
+}
+
+alert("Derzeit ist der Monat " + currentMonth2 + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + getWeekDay());
+
