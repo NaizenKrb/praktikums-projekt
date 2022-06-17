@@ -11,8 +11,8 @@
     <script type="text/javascript" async src="js/script.js"></script>
 </head>
 
-<body class="bg-gray-100">
-    <header class="shadow-lg m-0 bg-blue-500 rounded-b-lg sticky top-0 w-full">
+<body class="bg-slate-100">
+    <header class="shadow-lg m-0 bg-blue-500 rounded-b-lg sticky top-0 w-half">
         <div class="flex justify-evenly items-center p-1">
         <button class="p-1 rounded-full h-full shadow-lg bg-blue-400 hover:bg-slate-200 active:bg-slate-300" id="last">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -28,35 +28,35 @@
         </div>
     </header>
     <main class="w-full">
-        <div class="my-20 mx-5 outline outline-slate-600 rounded-lg shadow-lg" id="calendar">
+        <div class="my-20 mx-5 rounded-lg shadow-lg" id="calendar">
             <!-- Hier startet der "Header" des Kalenders-->
-            <div class="grid grid-cols-7 text-center bg-gray-400 rounded-t-lg sticky top-[72px] overflow-hidden " id="table-header">
-                <div class="py-4 px-3 border-r border-gray-700 border-b-2 truncate">
+            <div class="grid grid-cols-7 text-center font-bold bg-slate-400 rounded-t-lg sticky top-[72px] overflow-hidden " id="table-header">
+                <div class="py-4 px-3 border-r border-slate-600 border-b-2 truncate">
                     Mo.
                 </div>
-                <div class="py-4 px-3 border-r border-gray-700 border-b-2 truncate">
+                <div class="py-4 px-3 border-r border-slate-600 border-b-2 truncate">
                     Di.
                 </div>
-                <div class="py-4 px-3 border-r border-gray-700 border-b-2 truncate">
+                <div class="py-4 px-3 border-r border-slate-600 border-b-2 truncate">
                     Mi.
                 </div>
-                <div class="py-4 px-3 border-r border-gray-700 border-b-2 truncate">
+                <div class="py-4 px-3 border-r border-slate-600 border-b-2 truncate">
                     Do.
                 </div>
-                <div class="py-4 px-4 border-r border-gray-700 border-b-2 truncate">
+                <div class="py-4 px-4 border-r border-slate-600 border-b-2 truncate">
                     Fr.
                 </div>
-                <div class="py-4 px-4 border-r border-gray-700 border-b-2 bg-gray-600 text-gray-900 truncate">
+                <div class="py-4 px-4 border-r border-slate-600 border-b-2 bg-slate-500 text-gray-900 truncate">
                     Sa.
                 </div>
-                <div class="py-4 px-4 border-r border-gray-700 border-b-2 bg-gray-600 text-gray-900 truncate">
+                <div class="py-4 px-4 border-slate-600 border-b-2 bg-slate-500 text-gray-900 truncate">
                     So.
                 </div>
             </div>
             <!-- Hier starten die Daten und die Felder für die Leute die Urlaub haben -->
-            <div class="grid grid-cols-7 initial-scale overflow-hidden" id="days">
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+            <div class="grid grid-cols-7 initial-scale overflow-hidden rounded-b-lg" id="days">
+                <div class="border-r border-b border-slate-600 bg-slate-100 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         1.
                     </div>
                     <div class="py-1 min-h-[12rem]">
@@ -77,8 +77,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-b border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         2.
                     </div>
                     <div class="py-1 min-h-[12rem]">
@@ -99,8 +99,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-b border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         3.
                     </div>
                     <div class="py-1 min-h-[12rem] place-content-start">
@@ -121,8 +121,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-b border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         4.
                     </div>
                     <div class="py-1 min-h-[12rem] place-content-start">
@@ -144,8 +144,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-b border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         5.
                     </div>
                     <div class="py-1 min-h-[12rem]">
@@ -163,22 +163,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 bg-gray-400  truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
+                <div class="border-r border-b border-slate-600 bg-slate-300  truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
                         6.
                     </div>
                     <div class="py-1 min-h-[12rem]">
                     </div>
                 </div>
-                <div class="border-b border-gray-700 bg-gray-400 truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
+                <div class="border-b border-slate-600 bg-slate-300 truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
                         7.
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]">
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         8.
                     </div>
                     <div class="py-1 min-h-[12rem]">
@@ -196,8 +196,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         9.
                     </div>
                     <div class="py-1 min-h-[12rem] place-content-start">
@@ -215,8 +215,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         10.
                     </div>
                     <div class="py-1 min-h-[12rem] place-content-start">
@@ -234,8 +234,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         11.
                     </div>
                     <div class="py-1 min-h-[12rem] place-content-start">
@@ -253,8 +253,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
+                <div class="border-r border-slate-600 truncate">
+                    <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                         12.
                     </div>
                     <div class="py-1 min-h-[12rem]">
@@ -272,234 +272,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="border-r border-b border-gray-700 bg-gray-400  truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
+                <div class="border-r border-slate-600 bg-slate-300  truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
                         13.
                     </div>
                     <div class="grid grid-row gap-y-1.5 py-1 min-h-[12rem]">
                     </div>
                 </div>
-                <div class="border-b border-gray-700 bg-gray-400 truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
+                <div class="bg-slate-300 truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
                         14.
-                    </div>
-                    <div class="grid grid-row py-1 h-24 min-h-[12rem]">
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        15.
-                    </div>
-                    <div class="py-1 min-h-[12rem]">
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        16.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        17.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        18.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        19.
-                    </div>
-                    <div class="py-1 min-h-[12rem]">
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 bg-gray-400  truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
-                        20.
-                    </div>
-                    <div class="grid grid-row gap-y-1.5 py-1 min-h-[12rem]">
-                    </div>
-                </div>
-                <div class="border-b border-gray-700 bg-gray-400 truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
-                        21.
-                    </div>
-                    <div class="grid grid-row py-1 h-24 min-h-[12rem]">
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        22.
-                    </div>
-                    <div class="py-1 min-h-[12rem]">
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        23.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        24.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        25.
-                    </div>
-                    <div class="py-1 min-h-[12rem] place-content-start">
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 text-red-900 bg-red-300">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 truncate">
-                    <div class="border-b border-gray-700 bg-gray-300 py-1 px-3">
-                        26.
-                    </div>
-                    <div class="py-1 min-h-[12rem]">
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                        <div class="my-2 px-3 mr-1 text-red-900 bg-red-300 rounded-r-lg">
-                            NG
-                        </div>
-                    </div>
-                </div>
-                <div class="border-r border-b border-gray-700 bg-gray-400  truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
-                        27.
-                    </div>
-                    <div class="grid grid-row gap-y-1.5 py-1 min-h-[12rem]">
-                    </div>
-                </div>
-                <div class="border-b border-gray-700 bg-gray-400 truncate">
-                    <div class="py-1 px-3 border-b border-gray-700 bg-gray-500 text-gray-800">
-                        28.
                     </div>
                     <div class="grid grid-row py-1 h-24 min-h-[12rem]">
                     </div>
