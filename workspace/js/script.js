@@ -2,13 +2,12 @@ const months = ["Januar","Februar","Maerz","April",
                 "Mai","Juni","Juli","August","September",
                 "Oktober","November","Dezember"];
 
-const weekDays = ["Montag","Dienstag","Mittwoch",
-                "Donnerstag","Freitag","Samstag",
-                "Sonntag"];
+const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
+                "Donnerstag","Freitag","Samstag"];
 
 const d = new Date();
-var monthIndex = d.getMonth();
-var year = d.getFullYear()
+let monthIndex = d.getMonth();
+let year = d.getFullYear();
 const currentMonth = months[monthIndex];
 
 
@@ -49,9 +48,9 @@ function getDaysInMonth(year, month) {
 }
 
 function getWeekDay() {
-    const weekdayIndex = date.getDay() - 1;
+    const weekdayIndex = date.getDay();
     return weekDays[weekdayIndex];
 }
 
-alert("Derzeit ist der Monat " + currentMonth2 + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + getWeekDay());
+alert("Derzeit ist der Monat " + currentMonth2 + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
 
