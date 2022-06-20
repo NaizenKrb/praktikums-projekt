@@ -21,8 +21,8 @@ const lastMonth = getDaysInMonth(currentYear, monthIndex - 1);
 const nextMonth = getDaysInMonth(currentYear, monthIndex + 1);
 
 
-const lastMonthDay = getDaysInMonth(currentYear, monthIndex - 1);
-const nextMonthDay = getDaysInMonth(currentYear, monthIndex + 1);
+const lastMonthDays = getDaysInMonth(currentYear, monthIndex - 1);
+const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 
 
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
