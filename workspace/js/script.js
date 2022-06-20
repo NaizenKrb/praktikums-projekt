@@ -1,3 +1,5 @@
+// Language: javascript
+
 const months = ["Januar","Februar","Maerz","April",
                 "Mai","Juni","Juli","August","September",
                 "Oktober","November","Dezember"];
@@ -13,24 +15,6 @@ const currentMonth = months[monthIndex];
 
 document.getElementById("month").innerHTML = currentMonth + " " + year;
 
-document.getElementById("next").onclick = function() {nextMonth()};
-document.getElementById("last").onclick = function() {lastMonth()};
-
-
-function nextMonth() {
-    if (monthIndex < 11) {
-        monthIndex += 1;
-    }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
-}
-
-function lastMonth() {
-    if (monthIndex > 0) {
-        monthIndex -= 1;
-    }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
-}
-
 
 const date = new Date();
 const currentYear = date.getFullYear();
@@ -39,6 +23,11 @@ const currentDay = date.getDate();
 const monthIndex2 = date.getMonth();
 const currentMonth2 = months[monthIndex2];
 
+const lastMonth = getDaysInMonth(currentYear, monthIndex2 - 1);
+const nextMonth = getDaysInMonth(currentYear, monthIndex2 + 1);
+
+const lastMonthDay = getDaysInMonth(currentYear, monthIndex2 - 1);
+const nextMonthDay = getDaysInMonth(currentYear, monthIndex2 + 1);
 
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex2);
 const weekDay = getWeekDay();
@@ -54,3 +43,30 @@ function getWeekDay() {
 
 alert("Derzeit ist der Monat " + currentMonth2 + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
 
+const nextButtonClicked = document.getElementById("next")
+if (nextButtonClicked != null) {
+    nextButtonClicked.addEventListener("click", function() {
+        setNextMonth();
+    });
+}
+
+const lastButtonClicked = document.getElementById("last")
+if (lastButtonClicked != null) {
+    lastButtonClicked.addEventListener("click", function() {
+        setLastMonth();
+    });
+}
+
+function setNextMonth() {
+    if (monthIndex < 11) {
+        monthIndex += 1;
+    }
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
+}
+
+function setLastMonth() {
+    if (monthIndex > 0) {
+        monthIndex -= 1;
+    }
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
+}
