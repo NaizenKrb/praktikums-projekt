@@ -7,30 +7,28 @@ const months = ["Januar","Februar","Maerz","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
-const d = new Date();
-let monthIndex = d.getMonth();
-let year = d.getFullYear();
-const currentMonth = months[monthIndex];
-
-
-document.getElementById("month").innerHTML = currentMonth + " " + year;
-
 
 const date = new Date();
 const currentYear = date.getFullYear();
 const currentDay = date.getDate();
 
-const monthIndex2 = date.getMonth();
-const currentMonth2 = months[monthIndex2];
 
-const lastMonth = getDaysInMonth(currentYear, monthIndex2 - 1);
-const nextMonth = getDaysInMonth(currentYear, monthIndex2 + 1);
+let monthIndex = date.getMonth();
+const currentMonth = months[monthIndex];
 
-const lastMonthDay = getDaysInMonth(currentYear, monthIndex2 - 1);
-const nextMonthDay = getDaysInMonth(currentYear, monthIndex2 + 1);
 
-const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex2);
+const lastMonth = getDaysInMonth(currentYear, monthIndex - 1);
+const nextMonth = getDaysInMonth(currentYear, monthIndex + 1);
+
+
+const lastMonthDay = getDaysInMonth(currentYear, monthIndex - 1);
+const nextMonthDay = getDaysInMonth(currentYear, monthIndex + 1);
+
+
+const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 const weekDay = getWeekDay();
+
+document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 
 function getDaysInMonth(year, month) {
     return new Date(year, month, 0).getDate();
@@ -41,7 +39,7 @@ function getWeekDay() {
     return weekDays[weekdayIndex];
 }
 
-alert("Derzeit ist der Monat " + currentMonth2 + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
+alert("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
 
 const nextButtonClicked = document.getElementById("next")
 if (nextButtonClicked != null) {
@@ -59,14 +57,15 @@ if (lastButtonClicked != null) {
 
 function setNextMonth() {
     if (monthIndex < 11) {
+        console.log(monthIndex);
         monthIndex += 1;
     }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
 }
 
 function setLastMonth() {
     if (monthIndex > 0) {
         monthIndex -= 1;
     }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + year;
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
 }
