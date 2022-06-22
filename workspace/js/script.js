@@ -1,6 +1,5 @@
 // Language: javascript
 "use strict";
-
 const months = ["Januar","Februar","Maerz","April",
                 "Mai","Juni","Juli","August","September",
                 "Oktober","November","Dezember"];
@@ -41,15 +40,12 @@ function getDaysPlusWeekday(monthIndex, year) {
         const weekDay = getWeekDay(year, monthIndex, i);
         const date = i;
         const day = weekDay + ", " + date;
-        //document.getElementById("days").innerHTML += `"<li>" + day + "</li>"`;
-        
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-
-        var ausgabe = (weekEnd ?? normalDay) ?
+        let ausgabe = (weekEnd ?? normalDay) ?
         `
-        <div class="border-r border-b border-slate-600 bg-slate-300 truncate">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
+        <div class="border-r border-b border-slate-600 bg-slate-300">
+            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
             ${day.split(",")[1]}.
             ${day.split(",")[0]}
             </div>
@@ -57,69 +53,18 @@ function getDaysPlusWeekday(monthIndex, year) {
         </div>` 
         :
         `
-        <div class="border-r border-b border-slate-600 bg-slate-100 truncate">
-            <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
+        <div class="border-r border-b border-slate-600 bg-slate-100">
+            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
                 ${day.split(",")[1]}.
                 ${day.split(",")[0]}
             </div>
-            <div class="py-1 min-h-[12rem]">
-                <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                    NG
-                </div>
-                <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                    NG
-                </div>
-                <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                    NG
-                </div>
-                <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-                    NG
-                </div>
-                <div class="my-2 px-3 gap ml-1 rounded-l-lg text-blue-900 bg-blue-300">
-                    NH
-                </div>
+            <div class="py-1 min-h-[12rem] break-words">
+                "Here you can add some content"
             </div>
         </div>
         `;
+
         document.getElementById("days").innerHTML += ausgabe;
-
-
-        // if(weekDay === "Samstag" || weekDay === "Sonntag") {
-        //     document.getElementById("days").innerHTML += `
-        //     <div class="border-b border-slate-600 bg-slate-300 truncate">
-        //         <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
-        //         ${day.split(",")[1]}
-        //         </div>
-        //         <div class="py-1 h-24 min-h-[12rem]">
-        //         </div>
-        //     </div>
-        //     `;
-        // } else {
-        // document.getElementById("days").innerHTML += `
-        // <div class="border-r border-b border-slate-600 bg-slate-100 truncate">
-        //     <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
-        //         ${day.split(",")[1]}
-        //     </div>
-        //     <div class="py-1 min-h-[12rem]">
-        //         <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-        //             NG
-        //         </div>
-        //         <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-        //             NG
-        //         </div>
-        //         <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-        //             NG
-        //         </div>
-        //         <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
-        //             NG
-        //         </div>
-        //         <div class="my-2 px-3 gap ml-1 rounded-l-lg text-blue-900 bg-blue-300">
-        //             NH
-        //         </div>
-        //     </div>
-        // </div>
-        // `
-        // }
     }
 }
 
