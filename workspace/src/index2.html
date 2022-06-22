@@ -108,12 +108,18 @@
 
   <main class="w-full">
     <div class="my-20 rounded-xl shadow-lg lg:flex lg:flex-auto lg:flex-col" id="calendar">
-      <div class="grid grid-cols-7 text-center font-bold bg-slate-400 rounded-t-lg sticky top-[72px] overflow-hidden " id="table-header">
-
+      <div id="table-header" class="grid grid-cols-7 gap-px border-b-2 border-slate-600 bg-slate-400 text-center text-l font-bold rounded-t-lg leading-6 lg:flex-none  overflow-hidden ">
+        <div class="bg-slate-400 py-2">M<span class="sr-only sm:not-sr-only">ontag</span></div>
+        <div class="bg-slate-400 py-2">D<span class="sr-only sm:not-sr-only">ienstag</span></div>
+        <div class="bg-slate-400 py-2">M<span class="sr-only sm:not-sr-only">ittwoch</span></div>
+        <div class="bg-slate-400 py-2">D<span class="sr-only sm:not-sr-only">onnerstag</span></div>
+        <div class="bg-slate-400 py-2">F<span class="sr-only sm:not-sr-only">reitag</span></div>
+        <div class="bg-slate-500 py-2">S<span class="sr-only sm:not-sr-only">amstag</span></div>
+        <div class="bg-slate-500 py-2">S<span class="sr-only sm:not-sr-only">onntag</span></div>
       </div>
 
-      <div class="grid grid-cols-7 initial-scale overflow-hidden rounded-b-lg" id="days">
 
+      <div class="grid grid-cols-7 initial-scale overflow-hidden rounded-b-lg" id="days">
       </div>
 
     </div>
