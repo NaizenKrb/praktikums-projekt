@@ -30,6 +30,7 @@ const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 
+getDaysPlusWeekday(monthIndex, currentYear);
 
 // Get all the Dates + the Weekday
 
