@@ -26,7 +26,7 @@ const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 
 
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
-const weekDay = getWeekDay();
+const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 
