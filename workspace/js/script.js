@@ -115,6 +115,11 @@ function setLastMonth() {
     getDaysPlusWeekday(monthIndex, currentYear);
 }
 
+function addEvent() {
+
+};
+
+
 
 
 
