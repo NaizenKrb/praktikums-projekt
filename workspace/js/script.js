@@ -123,6 +123,15 @@ function addEvent() {
     
 };
 
+const thisMonthButton = document.getElementById("thisMonth");
+thisMonthButton.addEventListener("click", jumpToThisMonth);
+
+function jumpToThisMonth() {
+    monthIndex = date.getMonth();
+    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
+    document.getElementById("days").innerHTML = "";
+    getDaysPlusWeekday(monthIndex, currentYear);
+}
 
 
 
