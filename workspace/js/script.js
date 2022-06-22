@@ -115,8 +115,11 @@ function setLastMonth() {
     getDaysPlusWeekday(monthIndex, currentYear);
 }
 
-function addEvent() {
+const eventButton = document.getElementById("addEvent");
+eventButton.addEventListener("click", addEvent);
 
+function addEvent() {
+    console.log("Event added");
 };
 
 
