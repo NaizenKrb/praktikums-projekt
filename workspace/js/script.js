@@ -120,6 +120,7 @@ eventButton.addEventListener("click", addEvent);
 
 function addEvent() {
     console.log("Event added");
+    
 };
 
 
