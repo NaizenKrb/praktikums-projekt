@@ -51,6 +51,7 @@ function getDaysPlusWeekday(monthIndex, year) {
         <div class="border-r border-b border-slate-600 bg-slate-300 truncate">
             <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800">
             ${day.split(",")[1]}.
+            ${day.split(",")[0]}
             </div>
             <div class="py-1 h-24 min-h-[12rem]"></div>
         </div>` 
@@ -59,6 +60,7 @@ function getDaysPlusWeekday(monthIndex, year) {
         <div class="border-r border-b border-slate-600 bg-slate-100 truncate">
             <div class="border-b border-slate-600 bg-slate-300 py-1 px-3">
                 ${day.split(",")[1]}.
+                ${day.split(",")[0]}
             </div>
             <div class="py-1 min-h-[12rem]">
                 <div class="my-2 px-3 ml-1 rounded-l-lg text-red-900 bg-red-300">
