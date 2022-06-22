@@ -99,7 +99,6 @@ if (lastButtonClicked != null) {
 
 function setNextMonth() {
     if (monthIndex < 11) {
-        console.log(monthIndex);
         monthIndex += 1;
     }
     document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
