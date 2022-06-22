@@ -145,35 +145,6 @@ function fillCalendar() {
     const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
     const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
     let ausgabe = "";
-    for (let i = 1; i <= days; i++) {
-        const weekDay = getWeekDay(currentYear, monthIndex, i);
-        const date = i;
-        const day = weekDay + ", " + date;
-        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let ausgabe = (weekEnd ?? normalDay) ?
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-300">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-            ${day.split(",")[1]}.
-            ${day.split(",")[0]}
-            </div>
-            <div class="py-1 h-24 min-h-[12rem]"></div>
-        </div>`
-        :
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-100">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
-                ${day.split(",")[1]}.
-                ${day.split(",")[0]}
-            </div>
-            <div class="py-1 min-h-[12rem] break-words">
-                "Here you can add some content"
-            </div>
-        </div>
-        `;
-        document.getElementById("days").innerHTML += ausgabe;
-    }
     for (let i = 1; i <= lastMonthDays; i++) {
         const weekDay = getWeekDay(currentYear, monthIndex - 1, i);
         const date = i;
@@ -203,6 +174,36 @@ function fillCalendar() {
         `;
         document.getElementById("days").innerHTML += ausgabe;
     }
+    for (let i = 1; i <= days; i++) {
+        const weekDay = getWeekDay(currentYear, monthIndex, i);
+        const date = i;
+        const day = weekDay + ", " + date;
+        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
+        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
+        let ausgabe = (weekEnd ?? normalDay) ?
+        `
+        <div class="border-r border-b border-slate-600 bg-slate-300">
+            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
+            ${day.split(",")[1]}.
+            ${day.split(",")[0]}
+            </div>
+            <div class="py-1 h-24 min-h-[12rem]"></div>
+        </div>`
+        :
+        `
+        <div class="border-r border-b border-slate-600 bg-slate-100">
+            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                ${day.split(",")[1]}.
+                ${day.split(",")[0]}
+            </div>
+            <div class="py-1 min-h-[12rem] break-words">
+                "Here you can add some content"
+            </div>
+        </div>
+        `;
+        document.getElementById("days").innerHTML += ausgabe;
+    }
+    
     for (let i = 1; i <= nextMonthDays; i++) {
         const weekDay = getWeekDay(currentYear, monthIndex + 1, i);
         const date = i;
