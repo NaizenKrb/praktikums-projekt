@@ -32,6 +32,7 @@ document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 
 getDaysPlusWeekday(monthIndex, currentYear);
 
+
 // Get all the Dates + the Weekday
 
 function getDaysPlusWeekday(monthIndex, year) {
@@ -102,6 +103,8 @@ function setNextMonth() {
         monthIndex += 1;
     }
     document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
+    document.getElementById("days").innerHTML = "";
+    getDaysPlusWeekday(monthIndex, currentYear);
 }
 
 function setLastMonth() {
@@ -109,6 +112,8 @@ function setLastMonth() {
         monthIndex -= 1;
     }
     document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
+    document.getElementById("days").innerHTML = "";
+    getDaysPlusWeekday(monthIndex, currentYear);
 }
 
 
