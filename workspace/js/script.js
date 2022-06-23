@@ -28,6 +28,10 @@ const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
+const viewButton = document.getElementById("viewButton");
+const viewMenu = document.getElementById("menu");
+viewButton.addEventListener("click", changeViewButton);
+
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 
 getDaysPlusWeekday(monthIndex, currentYear);
@@ -118,6 +122,15 @@ function setLastMonth() {
 const eventButton = document.getElementById("addEvent");
 eventButton.addEventListener("click", addEvent);
 
+
+function changeViewButton() {
+    console.log("View changed");
+    if (viewMenu.classList.contains("hidden")) {
+        viewMenu.classList.remove("hidden");
+    } else {
+        viewMenu.classList.add("hidden");
+    }
+}
 function addEvent() {
     console.log("Event added");
     
@@ -139,41 +152,16 @@ function jumpToThisMonth() {
 
 function fillCalendar() {
     const days = getDaysInMonth(currentYear, monthIndex);
-    const lastMonthDays = getDaysInMonth(currentYear, monthIndex - 1);
-    const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
+
+    const lastMonthDays = getDaysOfLastMonth(currentYear, monthIndex - 1);
+    const nextMonthDays = getDaysOfNextMonth(currentYear, monthIndex + 1);
+
     const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
     const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
     const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
     let ausgabe = "";
-    for (let i = 1; i <= lastMonthDays; i++) {
-        const weekDay = getWeekDay(currentYear, monthIndex - 1, i);
-        const date = i;
-        const day = weekDay + ", " + date;
-        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let ausgabe = (weekEnd ?? normalDay) ?
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-300">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-            ${day.split(",")[1]}.
-            ${day.split(",")[0]}
-            </div>
-            <div class="py-1 h-24 min-h-[12rem]"></div>
-        </div>`
-        :
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-100">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
-                ${day.split(",")[1]}.
-                ${day.split(",")[0]}
-            </div>
-            <div class="py-1 min-h-[12rem] break-words">
-                "Here you can add some content"
-            </div>
-        </div>
-        `;
-        document.getElementById("days").innerHTML += ausgabe;
-    }
+
+    
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(currentYear, monthIndex, i);
         const date = i;
@@ -203,40 +191,10 @@ function fillCalendar() {
         `;
         document.getElementById("days").innerHTML += ausgabe;
     }
-    
-    for (let i = 1; i <= nextMonthDays; i++) {
-        const weekDay = getWeekDay(currentYear, monthIndex + 1, i);
-        const date = i;
-        const day = weekDay + ", " + date;
-        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let ausgabe = (weekEnd ?? normalDay) ?
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-300">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-            ${day.split(",")[1]}.
-            ${day.split(",")[0]}
-            </div>
-            <div class="py-1 h-24 min-h-[12rem]"></div>
-        </div>`
-        :
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-100">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
-                ${day.split(",")[1]}.
-                ${day.split(",")[0]}
-            </div>
-            <div class="py-1 min-h-[12rem] break-words">
-                "Here you can add some content"
-            </div>
-        </div>
-        `;
-        document.getElementById("days").innerHTML += ausgabe;
-    }
 }
 
 
-
+console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
 
 
 console.log(getDaysInMonth(currentYear, monthIndex));
