@@ -7,7 +7,6 @@ const months = ["Januar","Februar","Maerz","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
-
 const date = new Date();
 const currentYear = date.getFullYear();
 const currentDay = date.getDate();
@@ -15,15 +14,6 @@ const currentDay = date.getDate();
 
 let monthIndex = date.getMonth();
 const currentMonth = months[monthIndex];
-
-
-const lastMonth = getDaysInMonth(currentYear, monthIndex - 1);
-const nextMonth = getDaysInMonth(currentYear, monthIndex + 1);
-
-
-const lastMonthDays = getDaysInMonth(currentYear, monthIndex - 1);
-const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
-
 
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
@@ -33,9 +23,22 @@ const viewMenu = document.getElementById("menu");
 viewButton.addEventListener("click", changeViewButton);
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
-
 getDaysPlusWeekday(monthIndex, currentYear);
 
+
+const nextButtonClicked = document.getElementById("next")
+if (nextButtonClicked != null) {
+    nextButtonClicked.addEventListener("click", function() {
+        setNextMonth();
+    });
+}
+
+const lastButtonClicked = document.getElementById("last")
+if (lastButtonClicked != null) {
+    lastButtonClicked.addEventListener("click", function() {
+        setLastMonth();
+    });
+}
 
 // Get all the Dates + the Weekday
 
@@ -78,27 +81,18 @@ function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
 
+function getDaysOfLastMonth(year, month) {
+    return new Date(year, month +1, 0).getDate();
+}
+
+function getDaysOfNextMonth(year, month) {
+    return new Date(year, month +1, 0).getDate();
+}
 
 function getWeekDay(year, month, day) {
     const date = new Date(year, month, day);
 
     return weekDays[date.getDay()];
-}
-
-alert("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
-
-const nextButtonClicked = document.getElementById("next")
-if (nextButtonClicked != null) {
-    nextButtonClicked.addEventListener("click", function() {
-        setNextMonth();
-    });
-}
-
-const lastButtonClicked = document.getElementById("last")
-if (lastButtonClicked != null) {
-    lastButtonClicked.addEventListener("click", function() {
-        setLastMonth();
-    });
 }
 
 function setNextMonth() {
@@ -131,8 +125,10 @@ function changeViewButton() {
         viewMenu.classList.add("hidden");
     }
 }
+
 function addEvent() {
     console.log("Event added");
+    
     
 };
 
