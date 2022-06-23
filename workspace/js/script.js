@@ -7,16 +7,16 @@ const months = ["Januar","Februar","Maerz","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
-const date = new Date();
+let date = new Date();
 let currentYear = date.getFullYear();
-const currentDay = date.getDate();
+let currentDay = date.getDate();
 
 
 let monthIndex = date.getMonth();
-const currentMonth = months[monthIndex];
+let currentMonth = months[monthIndex];
 
-const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
-const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
+let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
+let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
 //let viewButton = document.querySelectorAll(".viewButton");
 
@@ -40,6 +40,7 @@ const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
     entry.addEventListener("click", () => {
         console.log("Month changed");
+        currentYear = date.getFullYear();
         document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
         document.getElementById("days").innerHTML = "";
         getDaysPlusWeekday(monthIndex, currentYear);
@@ -73,7 +74,7 @@ function getDaysPlusWeekday(monthIndex, year) {
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(year, monthIndex, i);
         const date = i;
-        const day = weekDay + ", " + date;
+        let day = weekDay + ", " + date;
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
         let ausgabe = (weekEnd ?? normalDay) ?
@@ -108,7 +109,7 @@ function getDaysInMonth(year, month) {
 
 
 function getWeekDay(year, month, day) {
-    const date = new Date(year, month, day);
+    let date = new Date(year, month, day);
 
     return weekDays[date.getDay()];
 }
