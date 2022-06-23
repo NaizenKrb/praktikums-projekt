@@ -8,7 +8,7 @@ const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
 const date = new Date();
-const currentYear = date.getFullYear();
+let currentYear = date.getFullYear();
 const currentDay = date.getDate();
 
 
@@ -18,9 +18,34 @@ const currentMonth = months[monthIndex];
 const daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
-const viewButton = document.getElementById("viewButton");
-const viewMenu = document.getElementById("menu");
-viewButton.addEventListener("click", changeViewButton);
+//let viewButton = document.querySelectorAll(".viewButton");
+
+let buttonContainer = document.querySelectorAll(".buttoncontainer");
+
+buttonContainer.forEach((entry) =>{
+
+    entry.querySelector('.viewButton').addEventListener('click', () => {
+        console.log("View changed");
+        let menu = entry.querySelector(".viewMenu");
+        
+        if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+        } else {
+            menu.classList.add("hidden");
+        }
+    });         
+});
+
+const thisMonthButton = document.querySelectorAll(".thisMonth");
+thisMonthButton.forEach((entry) =>{
+    entry.addEventListener("click", () => {
+        console.log("Month changed");
+        document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
+        document.getElementById("days").innerHTML = "";
+        getDaysPlusWeekday(monthIndex, currentYear);
+        monthIndex = date.getMonth();
+    });
+});
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 getDaysPlusWeekday(monthIndex, currentYear);
@@ -81,13 +106,6 @@ function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-function getDaysOfLastMonth(year, month) {
-    return new Date(year, month +1, 0).getDate();
-}
-
-function getDaysOfNextMonth(year, month) {
-    return new Date(year, month +1, 0).getDate();
-}
 
 function getWeekDay(year, month, day) {
     const date = new Date(year, month, day);
@@ -96,7 +114,10 @@ function getWeekDay(year, month, day) {
 }
 
 function setNextMonth() {
-    if (monthIndex < 11) {
+    if (monthIndex === 11) {
+        monthIndex = 0;
+        currentYear += 1;
+    } else {
         monthIndex += 1;
     }
     document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
@@ -105,7 +126,10 @@ function setNextMonth() {
 }
 
 function setLastMonth() {
-    if (monthIndex > 0) {
+    if (monthIndex === 0) {
+        monthIndex = 11;
+        currentYear -= 1;
+    } else {
         monthIndex -= 1;
     }
     document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
@@ -132,16 +156,6 @@ function addEvent() {
     
 };
 
-const thisMonthButton = document.getElementById("thisMonth");
-thisMonthButton.addEventListener("click", jumpToThisMonth);
-
-function jumpToThisMonth() {
-    monthIndex = date.getMonth();
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
-    document.getElementById("days").innerHTML = "";
-    getDaysPlusWeekday(monthIndex, currentYear);
-}
-
 // Function to place the Days in the correct order 
 // and fill the empty spaces with 
 // the last month's days and the next month's days
@@ -149,8 +163,8 @@ function jumpToThisMonth() {
 function fillCalendar() {
     const days = getDaysInMonth(currentYear, monthIndex);
 
-    const lastMonthDays = getDaysOfLastMonth(currentYear, monthIndex - 1);
-    const nextMonthDays = getDaysOfNextMonth(currentYear, monthIndex + 1);
+    const lastMonthDays = getDaysInMonth(currentYear, monthIndex - 1);
+    const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 
     const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
     const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
