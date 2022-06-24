@@ -25,7 +25,6 @@ let buttonContainer = document.querySelectorAll(".buttoncontainer");
 buttonContainer.forEach((entry) =>{
 
     entry.querySelector('.viewButton').addEventListener('click', () => {
-        console.log("View changed");
         let menu = entry.querySelector(".viewMenu");
         
         if (menu.classList.contains("hidden")) {
@@ -39,12 +38,18 @@ buttonContainer.forEach((entry) =>{
 const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
     entry.addEventListener("click", () => {
-        console.log("Month changed");
-        currentYear = date.getFullYear();
-        document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
-        document.getElementById("days").innerHTML = "";
-        getDaysPlusWeekday(monthIndex, currentYear);
-        monthIndex = date.getMonth();
+        if(monthIndex !== date.getMonth()) {
+            console.log("Month changed");
+            monthIndex = date.getMonth();
+            currentYear = date.getFullYear();
+            document.querySelector("#days").innerHTML = "";
+            document.querySelector("#month").innerHTML = currentMonth + " " + currentYear;
+            getDaysPlusWeekday(monthIndex, currentYear);
+        } else {
+            console.log("Month not changed");
+            /// Alert or smth else later
+        }
+
     });
 });
 
@@ -70,37 +75,95 @@ if (lastButtonClicked != null) {
 
 function getDaysPlusWeekday(monthIndex, year) {
     const days = getDaysInMonth(year, monthIndex);
-    console.log(monthIndex);
+
+    let daysLastMonth = getDaysInMonth(year, monthIndex - 1);
+    let daysNextMonth = getDaysInMonth(year, monthIndex + 1);
+
+
+    let firstDayOfMonth = getWeekDay(year, monthIndex, 1);
+    let colStart;
+
+    if(firstDayOfMonth !== "Montag") {
+         colStart = weekDays.indexOf(firstDayOfMonth);
+    } else {
+         colStart = 0;
+    }
+
+
+
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(year, monthIndex, i);
-        const date = i;
+        let date = i;
         let day = weekDay + ", " + date;
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let ausgabe = (weekEnd ?? normalDay) ?
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-300">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-            ${day.split(",")[1]}.
-            ${day.split(",")[0]}
-            </div>
-            <div class="py-1 h-24 min-h-[12rem]"></div>
-        </div>` 
-        :
-        `
-        <div class="border-r border-b border-slate-600 bg-slate-100">
-            <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+        let colStartLastMonth;
+
+
+        if (colStart === 0) {
+            let ausgabe = (weekEnd ?? normalDay) ?
+                `
+            <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                 ${day.split(",")[1]}.
                 ${day.split(",")[0]}
+                </div>
+                <div class="py-1 h-24 min-h-[12rem]"></div>
+            </div>`
+                    :
+                    `
+            <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                    ${day.split(",")[1]}.
+                    ${day.split(",")[0]}
+                </div>
+                <div class="py-1 min-h-[12rem] break-words">
+                    "Here you can add some content"
+                </div>
             </div>
-            <div class="py-1 min-h-[12rem] break-words">
-                "Here you can add some content"
-            </div>
-        </div>
-        `;
+            `;
+            document.querySelector("#days").innerHTML += ausgabe;
+        } else {
+            let getFillDaysOfLastMonth = daysLastMonth - colStart;
+            console.log(getFillDaysOfLastMonth);
 
-        document.getElementById("days").innerHTML += ausgabe;
+            for (let i = 0; i < colStart; i++) {
+                colStartLastMonth = i*-1;
+
+
+
+                getFillDaysOfLastMonth--;
+
+            }
+
+            let ausgabe = (weekEnd ?? normalDay) ?
+                `
+            <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
+                ${day.split(",")[1]}.
+                ${day.split(",")[0]}
+                </div>
+                <div class="py-1 h-24 min-h-[12rem]"></div>
+            </div>`
+                    :
+                    `
+            <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                    ${day.split(",")[1]}.
+                    ${day.split(",")[0]}
+                </div>
+                <div class="py-1 min-h-[12rem] break-words">
+                    "Here you can add some content"
+                </div>
+            </div>
+            `;
+
+            document.querySelector("#days").innerHTML += ausgabe;
+        };
+
+
     }
+
 }
 
 function getDaysInMonth(year, month) {
@@ -121,8 +184,8 @@ function setNextMonth() {
     } else {
         monthIndex += 1;
     }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
-    document.getElementById("days").innerHTML = "";
+    document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
+    document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
 }
 
@@ -133,29 +196,19 @@ function setLastMonth() {
     } else {
         monthIndex -= 1;
     }
-    document.getElementById("month").innerHTML = months[monthIndex] + " " + currentYear;
-    document.getElementById("days").innerHTML = "";
+    document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
+    document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
 }
 
 const eventButton = document.getElementById("addEvent");
 eventButton.addEventListener("click", addEvent);
 
-
-function changeViewButton() {
-    console.log("View changed");
-    if (viewMenu.classList.contains("hidden")) {
-        viewMenu.classList.remove("hidden");
-    } else {
-        viewMenu.classList.add("hidden");
-    }
-}
-
 function addEvent() {
     console.log("Event added");
     
     
-};
+}
 
 // Function to place the Days in the correct order 
 // and fill the empty spaces with 
@@ -200,12 +253,9 @@ function fillCalendar() {
             </div>
         </div>
         `;
-        document.getElementById("days").innerHTML += ausgabe;
+        document.querySelector("#days").innerHTML += ausgabe;
     }
 }
 
 
 console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
-
-
-console.log(getDaysInMonth(currentYear, monthIndex));
