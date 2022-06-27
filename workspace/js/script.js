@@ -77,28 +77,35 @@ function getDaysPlusWeekday(monthIndex, year) {
 
 
     let firstDayOfMonth = getWeekDay(year, monthIndex, 1);
-    let colStart;
+    let colStart,
+        rowStart;
+
+
 
     if(firstDayOfMonth !== "Montag") {
-         colStart = weekDays.indexOf(firstDayOfMonth);
+         colStart = weekDays.indexOf(firstDayOfMonth) - 1;
     } else {
          colStart = 0;
     }
+
+
 
     let colStartLastMonth;
     let colStartNextMonth;
 
     let getFillDaysOfLastMonth = daysLastMonth;
     let output;
-    for (let i = 0; i < colStart - 1; i++) {
 
-        colStartLastMonth = i;
-        // Tageszahl für die Füllung vom letzten Monat
-        console.log(getFillDaysOfLastMonth, colStartLastMonth);
-        let lastMonthDay = getFillDaysOfLastMonth + ","+ colStartLastMonth;
-        output =
-            `
-                <div class="-col-start-${colStartLastMonth} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+    function fillWithPreviousMonth() {
+        for (let i = colStart - 1; i >= 0; i--) {
+
+            colStartLastMonth = i;
+            // Tageszahl für die Füllung vom letzten Monat
+            console.log(getFillDaysOfLastMonth, colStartLastMonth);
+            let lastMonthDay = getFillDaysOfLastMonth + ","+ colStartLastMonth;
+            output =
+                `
+                <div class="col-start-${colStartLastMonth + 1} col-span-1 row-start-${1} border-r border-b border-slate-600 bg-slate-300">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${lastMonthDay.split(",")[1]}.
                     ${lastMonthDay.split(",")[0]}
@@ -107,15 +114,12 @@ function getDaysPlusWeekday(monthIndex, year) {
                 </div>
             `;
 
-        document.querySelector("#days").innerHTML += output
-
-
-
-        getFillDaysOfLastMonth--;
-
+            document.querySelector("#days").innerHTML += output;
+            getFillDaysOfLastMonth--;
+        }
     }
 
-
+    fillWithPreviousMonth();
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(year, monthIndex, i);
         let date = i;
@@ -123,11 +127,26 @@ function getDaysPlusWeekday(monthIndex, year) {
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
 
+        console.log(i + colStart)
+
+        if ((i + colStart) > 7 && (i + colStart) < 15) {
+            rowStart = 2;
+        } else if((i + colStart) > 14 && (i + colStart) < 22) {
+            rowStart = 3;
+        } else if((i + colStart) > 21 && (i + colStart) < 29) {
+            rowStart = 4;
+        } else if((i + colStart) > 28 && (i + colStart) < 36) {
+            rowStart = 5;
+        } else if((i + colStart) > 35) {
+            rowStart = 6;
+        } else{
+            rowStart = 1;
+        };
 
         if (colStart === 0) {
             let output = (weekEnd ?? normalDay) ?
                 `
-                <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
@@ -137,7 +156,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                 `
                 :
                 `
-                <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-100">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
                         ${day.split(",")[1]}.
                         ${day.split(",")[0]}
@@ -149,10 +168,13 @@ function getDaysPlusWeekday(monthIndex, year) {
             `;
             document.querySelector("#days").innerHTML += output;
         } else {
-
+            if(colStart + i === 0) {
+                colStart = 6;
+                fillWithPreviousMonth();
+            };
             output = (weekEnd ?? normalDay) ?
                 `
-                <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
@@ -162,7 +184,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                 `
                 :
                 `
-                <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-100">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
                         ${day.split(",")[1]}.
                         ${day.split(",")[0]}
@@ -172,8 +194,8 @@ function getDaysPlusWeekday(monthIndex, year) {
                     </div>
                 </div>
                 `;
-            document.querySelector("#days").innerHTML += output;
-        };
+            }
+        document.querySelector("#days").innerHTML += output;
     }
 }
 
