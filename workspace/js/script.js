@@ -11,7 +11,6 @@ let date = new Date();
 let currentYear = date.getFullYear();
 let currentDay = date.getDate();
 
-
 let monthIndex = date.getMonth();
 let currentMonth = months[monthIndex];
 
@@ -23,7 +22,6 @@ let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
 
 buttonContainer.forEach((entry) =>{
-
     entry.querySelector('.viewButton').addEventListener('click', () => {
         let menu = entry.querySelector(".viewMenu");
         
@@ -49,13 +47,11 @@ thisMonthButton.forEach((entry) =>{
             console.log("Month not changed");
             /// Alert or smth else later
         }
-
     });
 });
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 getDaysPlusWeekday(monthIndex, currentYear);
-
 
 const nextButtonClicked = document.getElementById("next")
 if (nextButtonClicked != null) {
@@ -89,6 +85,35 @@ function getDaysPlusWeekday(monthIndex, year) {
          colStart = 0;
     }
 
+    let colStartLastMonth;
+    let colStartNextMonth;
+
+    let getFillDaysOfLastMonth = daysLastMonth;
+    let output;
+    for (let i = 0; i < colStart - 1; i++) {
+
+        colStartLastMonth = i;
+        // Tageszahl für die Füllung vom letzten Monat
+        console.log(getFillDaysOfLastMonth, colStartLastMonth);
+        let lastMonthDay = getFillDaysOfLastMonth + ","+ colStartLastMonth;
+        output =
+            `
+                <div class="-col-start-${colStartLastMonth} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
+                    ${lastMonthDay.split(",")[1]}.
+                    ${lastMonthDay.split(",")[0]}
+                    </div>
+                    <div class="py-1 h-24 min-h-[12rem]"></div>
+                </div>
+            `;
+
+        document.querySelector("#days").innerHTML += output
+
+
+
+        getFillDaysOfLastMonth--;
+
+    }
 
 
     for (let i = 1; i <= days; i++) {
@@ -97,73 +122,59 @@ function getDaysPlusWeekday(monthIndex, year) {
         let day = weekDay + ", " + date;
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let colStartLastMonth;
 
 
         if (colStart === 0) {
-            let ausgabe = (weekEnd ?? normalDay) ?
+            let output = (weekEnd ?? normalDay) ?
                 `
-            <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
-                <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-                ${day.split(",")[1]}.
-                ${day.split(",")[0]}
-                </div>
-                <div class="py-1 h-24 min-h-[12rem]"></div>
-            </div>`
-                    :
-                    `
-            <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
-                <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
+                    </div>
+                    <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
-                <div class="py-1 min-h-[12rem] break-words">
-                    "Here you can add some content"
+                `
+                :
+                `
+                <div class="col-start-${i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                        ${day.split(",")[1]}.
+                        ${day.split(",")[0]}
+                    </div>
+                    <div class="py-1 min-h-[12rem] break-words">
+                        "Here you can add some content"
+                    </div>
                 </div>
-            </div>
             `;
-            document.querySelector("#days").innerHTML += ausgabe;
+            document.querySelector("#days").innerHTML += output;
         } else {
-            let getFillDaysOfLastMonth = daysLastMonth - colStart;
-            console.log(getFillDaysOfLastMonth);
 
-            for (let i = 0; i < colStart; i++) {
-                colStartLastMonth = i*-1;
-
-
-
-                getFillDaysOfLastMonth--;
-
-            }
-
-            let ausgabe = (weekEnd ?? normalDay) ?
+            output = (weekEnd ?? normalDay) ?
                 `
-            <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
-                <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-                ${day.split(",")[1]}.
-                ${day.split(",")[0]}
-                </div>
-                <div class="py-1 h-24 min-h-[12rem]"></div>
-            </div>`
-                    :
-                    `
-            <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
-                <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
+                    </div>
+                    <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
-                <div class="py-1 min-h-[12rem] break-words">
-                    "Here you can add some content"
+                `
+                :
+                `
+                <div class="col-start-${colStart + i} col-span-1 border-r border-b border-slate-600 bg-slate-100">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                        ${day.split(",")[1]}.
+                        ${day.split(",")[0]}
+                    </div>
+                    <div class="py-1 min-h-[12rem] break-words">
+                        "Here you can add some content"
+                    </div>
                 </div>
-            </div>
-            `;
-
-            document.querySelector("#days").innerHTML += ausgabe;
+                `;
+            document.querySelector("#days").innerHTML += output;
         };
-
-
     }
-
 }
 
 function getDaysInMonth(year, month) {
@@ -223,7 +234,7 @@ function fillCalendar() {
     const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
     const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
     const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-    let ausgabe = "";
+    let output = "";
 
     
     for (let i = 1; i <= days; i++) {
@@ -232,7 +243,7 @@ function fillCalendar() {
         const day = weekDay + ", " + date;
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let ausgabe = (weekEnd ?? normalDay) ?
+        let output = (weekEnd ?? normalDay) ?
         `
         <div class="border-r border-b border-slate-600 bg-slate-300">
             <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
@@ -253,7 +264,7 @@ function fillCalendar() {
             </div>
         </div>
         `;
-        document.querySelector("#days").innerHTML += ausgabe;
+        document.querySelector("#days").innerHTML += output;
     }
 }
 
