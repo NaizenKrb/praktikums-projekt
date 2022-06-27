@@ -88,8 +88,6 @@ function getDaysPlusWeekday(monthIndex, year) {
          colStart = 0;
     }
 
-
-
     let colStartLastMonth;
     let colStartNextMonth;
 
@@ -102,13 +100,13 @@ function getDaysPlusWeekday(monthIndex, year) {
             colStartLastMonth = i;
             // Tageszahl für die Füllung vom letzten Monat
             console.log(getFillDaysOfLastMonth, colStartLastMonth);
-            let lastMonthDay = getFillDaysOfLastMonth + ","+ colStartLastMonth;
+            let lastMonthDay = getFillDaysOfLastMonth + ",";
             output =
                 `
-                <div class="col-start-${colStartLastMonth + 1} col-span-1 row-start-${1} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
-                    ${lastMonthDay.split(",")[1]}.
-                    ${lastMonthDay.split(",")[0]}
+                <div class="col-start-${colStartLastMonth + 1} col-span-1 row-start-${1} border-r border-b border-slate-600 bg-slate-400">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-500 text-gray-800 truncate">
+                    ${lastMonthDay.split(",")[0]}.
+                    ${lastMonthDay.split(",")[1]}
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
@@ -147,7 +145,7 @@ function getDaysPlusWeekday(monthIndex, year) {
             let output = (weekEnd ?? normalDay) ?
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
+                    <div class="py-1 px-3 border-b border-slate-400 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
                     </div>
@@ -157,7 +155,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                 :
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-100">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
                         ${day.split(",")[1]}.
                         ${day.split(",")[0]}
                     </div>
@@ -175,7 +173,7 @@ function getDaysPlusWeekday(monthIndex, year) {
             output = (weekEnd ?? normalDay) ?
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
+                    <div class="py-1 px-3 border-b border-slate-700 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
                     </div>
@@ -185,7 +183,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                 :
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-100">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-300  truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
                         ${day.split(",")[1]}.
                         ${day.split(",")[0]}
                     </div>
@@ -289,6 +287,5 @@ function fillCalendar() {
         document.querySelector("#days").innerHTML += output;
     }
 }
-
 
 console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
