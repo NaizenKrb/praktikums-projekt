@@ -182,7 +182,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                 `
                 :
                 `
-                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-100">
+                <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-50">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
                         ${day.split(",")[1]}.
                         ${day.split(",")[0]}
