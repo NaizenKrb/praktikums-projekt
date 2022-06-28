@@ -10,26 +10,21 @@ const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentDay = date.getDate();
-
 let monthIndex = date.getMonth();
 let currentMonth = months[monthIndex];
 
 let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
-//let viewButton = document.querySelectorAll(".viewButton");
-
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
-
 buttonContainer.forEach((entry) =>{
     entry.querySelector('.viewButton').addEventListener('click', () => {
         let menu = entry.querySelector(".viewMenu");
-        
         if (menu.classList.contains("hidden")) {
             menu.classList.remove("hidden");
         } else {
             menu.classList.add("hidden");
-        }
+        };
     });         
 });
 
@@ -37,7 +32,6 @@ const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
     entry.addEventListener("click", () => {
         if(monthIndex !== date.getMonth() || currentYear !== date.getFullYear()) {
-            console.log("Month changed");
             monthIndex = date.getMonth();
             currentYear = date.getFullYear();
             document.querySelector("#days").innerHTML = "";
@@ -58,14 +52,14 @@ if (nextButtonClicked != null) {
     nextButtonClicked.addEventListener("click", function() {
         setNextMonth();
     });
-}
+};
 
 const lastButtonClicked = document.getElementById("last")
 if (lastButtonClicked != null) {
     lastButtonClicked.addEventListener("click", function() {
         setLastMonth();
     });
-}
+};
 
 // Modal Part ---------------------------------------------------------------
 let openmodal = document.querySelectorAll(".addEvent");
@@ -76,59 +70,51 @@ openmodal.forEach((entry) =>{
     });
 });
 
-const overlay = document.querySelector('.modal-overlay')
-overlay.addEventListener('click', toggleModal)
+const overlay = document.querySelector('.modal-overlay');
+overlay.addEventListener('click', toggleModal);
 
 var closemodal = document.querySelectorAll('.modal-close')
 for (var i = 0; i < closemodal.length; i++) {
-    closemodal[i].addEventListener('click', toggleModal)
+    closemodal[i].addEventListener('click', toggleModal);
 };
 
 document.onkeydown = function(evt) {
     evt = evt || window.event
     var isEscape = false
     if ("key" in evt) {
-        isEscape = (evt.key === "Escape" || evt.key === "Esc")
+        isEscape = (evt.key === "Escape" || evt.key === "Esc");
     } else {
-        isEscape = (evt.keyCode === 27)
-    }
+        isEscape = (evt.keyCode === 27);
+    };
     if (isEscape && document.body.classList.contains('modal-active')) {
-        toggleModal()
-    }
+        toggleModal();
+    };
 };
 
-
 function toggleModal () {
-    const body = document.querySelector('body')
-    const modal = document.querySelector('.modal')
-    modal.classList.toggle('opacity-0')
-    modal.classList.toggle('pointer-events-none')
-    body.classList.toggle('modal-active')
-}
+    const body = document.querySelector('body');
+    const modal = document.querySelector('.modal');
+    modal.classList.toggle('opacity-0');
+    modal.classList.toggle('pointer-events-none');
+    body.classList.toggle('modal-active');
+};
 // End of Modal Part ---------------------------------------------------------
 
-
-
 // Get all the Dates + the Weekday
-
 function getDaysPlusWeekday(monthIndex, year) {
     const days = getDaysInMonth(year, monthIndex);
-
     let daysLastMonth = getDaysInMonth(year, monthIndex - 1);
     let daysNextMonth = getDaysInMonth(year, monthIndex + 1);
-
-
     let firstDayOfMonth = getWeekDay(year, monthIndex, 1);
+    let lastDayOfMonth = getWeekDay(year, monthIndex, days);
     let colStart,
         rowStart;
-
-
 
     if(firstDayOfMonth !== "Montag") {
          colStart = weekDays.indexOf(firstDayOfMonth) - 1;
     } else {
          colStart = 0;
-    }
+    };
 
     let colStartLastMonth;
     let colStartNextMonth;
@@ -141,7 +127,6 @@ function getDaysPlusWeekday(monthIndex, year) {
 
             colStartLastMonth = i;
             // Tageszahl für die Füllung vom letzten Monat
-            console.log(getFillDaysOfLastMonth, colStartLastMonth);
             let lastMonthDay = getFillDaysOfLastMonth + ",";
             output.push(
                 `
@@ -154,20 +139,18 @@ function getDaysPlusWeekday(monthIndex, year) {
                 </div>
             `);
             getFillDaysOfLastMonth--;
-        }
-    }
-
+        };
+    };
     fillWithPreviousMonth();
     output.reverse();
     document.querySelector("#days").innerHTML += output.join("");
+
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(year, monthIndex, i);
         let date = i;
         let day = weekDay + ", " + date;
         const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
         const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-
-        console.log(i + colStart)
 
         if ((i + colStart) > 7 && (i + colStart) < 15) {
             rowStart = 2;
@@ -236,13 +219,11 @@ function getDaysPlusWeekday(monthIndex, year) {
                     </div>
                 </div>
                 `;
-            }
+            };
         document.querySelector("#days").innerHTML += output;
-    }
-
+    };
     // Fill with Next Month -----------------------------------------------------
     output = [];
-    let lastDayOfMonth = getWeekDay(year, monthIndex, days);
     colStart = 6 - weekDays.indexOf(lastDayOfMonth);
     if(colStart != 6) {
         for(let i = 0; i <= colStart; i++){
@@ -257,22 +238,20 @@ function getDaysPlusWeekday(monthIndex, year) {
                 </div>
                 `
             );
-        }
+        };
         document.querySelector("#days").innerHTML += output.join("");
-    }
+    };
     // --------------------------------------------------------------------------
-}
+};
 
 function getDaysInMonth(year, month) {
     return new Date(year, month + 1, 0).getDate();
-}
-
+};
 
 function getWeekDay(year, month, day) {
     let date = new Date(year, month, day);
-
     return weekDays[date.getDay()];
-}
+};
 
 function setNextMonth() {
     if (monthIndex === 11) {
@@ -284,7 +263,7 @@ function setNextMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
-}
+};
 
 function setLastMonth() {
     if (monthIndex === 0) {
@@ -341,7 +320,5 @@ function fillCalendar() {
         </div>
         `;
         document.querySelector("#days").innerHTML += output;
-    }
-}
-
-console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
+    };
+};
