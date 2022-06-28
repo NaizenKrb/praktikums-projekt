@@ -166,10 +166,10 @@ function getDaysPlusWeekday(monthIndex, year) {
         };
 
         if (colStart === 0) {
-            let output = (weekEnd ?? normalDay) ?
+            let output = weekEnd == true ?
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-700 bg-slate-400 text-gray-800 truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
                     </div>
@@ -196,10 +196,10 @@ function getDaysPlusWeekday(monthIndex, year) {
                 output.reverse();
                 document.querySelector("#days").innerHTML += output.join("");
             };
-            output = (weekEnd ?? normalDay) ?
+            output = weekEnd == true ?
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-700 bg-slate-400 text-gray-800 truncate">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
                     </div>
