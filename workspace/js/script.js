@@ -67,6 +67,48 @@ if (lastButtonClicked != null) {
     });
 }
 
+// Modal Part ---------------------------------------------------------------
+var openmodal = document.querySelectorAll('.addEvent');
+for (var i = 0; i < openmodal.length; i++) {
+    openmodal[i].addEventListener('click', function(event){
+        event.preventDefault()
+        toggleModal()
+    })
+};
+
+const overlay = document.querySelector('.modal-overlay')
+overlay.addEventListener('click', toggleModal)
+
+var closemodal = document.querySelectorAll('.modal-close')
+for (var i = 0; i < closemodal.length; i++) {
+    closemodal[i].addEventListener('click', toggleModal)
+};
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event
+    var isEscape = false
+    if ("key" in evt) {
+        isEscape = (evt.key === "Escape" || evt.key === "Esc")
+    } else {
+        isEscape = (evt.keyCode === 27)
+    }
+    if (isEscape && document.body.classList.contains('modal-active')) {
+        toggleModal()
+    }
+};
+
+
+function toggleModal () {
+    const body = document.querySelector('body')
+    const modal = document.querySelector('.modal')
+    modal.classList.toggle('opacity-0')
+    modal.classList.toggle('pointer-events-none')
+    body.classList.toggle('modal-active')
+}
+// End of Modal Part ---------------------------------------------------------
+
+
+
 // Get all the Dates + the Weekday
 
 function getDaysPlusWeekday(monthIndex, year) {
@@ -145,7 +187,7 @@ function getDaysPlusWeekday(monthIndex, year) {
             let output = (weekEnd ?? normalDay) ?
                 `
                 <div class="col-span-1 row-start-${rowStart} border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-400 bg-slate-400 text-gray-800 truncate">
+                    <div class="py-1 px-3 border-b border-slate-700 bg-slate-400 text-gray-800 truncate">
                     ${day.split(",")[1]}.
                     ${day.split(",")[0]}
                     </div>
@@ -197,11 +239,12 @@ function getDaysPlusWeekday(monthIndex, year) {
             }
         document.querySelector("#days").innerHTML += output;
     }
+
+    // Fill with Next Month -----------------------------------------------------
     output = [];
     let lastDayOfMonth = getWeekDay(year, monthIndex, days);
     colStart = 6 - weekDays.indexOf(lastDayOfMonth);
     if(colStart != 6) {
-        console.log(colStart, "Test");
         for(let i = 0; i <= colStart; i++){
             let date = i + 1;
             output.push(
@@ -212,12 +255,12 @@ function getDaysPlusWeekday(monthIndex, year) {
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
-            `);
+                `
+            );
         }
         document.querySelector("#days").innerHTML += output.join("");
     }
-
-
+    // --------------------------------------------------------------------------
 }
 
 function getDaysInMonth(year, month) {
