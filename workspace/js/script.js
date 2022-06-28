@@ -1,11 +1,11 @@
 // Language: javascript
 "use strict";
-const months = ["Januar","Februar","Maerz","April",
-                "Mai","Juni","Juli","August","September",
-                "Oktober","November","Dezember"];
+const months = ["January","February","March","April",
+                "May","June","July","August","September",
+                "October","November","December"];
 
-const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
-                "Donnerstag","Freitag","Samstag"];
+const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
+                "Thursday","Friday","Saturday"];
 
 let date = new Date();
 let currentYear = date.getFullYear();
