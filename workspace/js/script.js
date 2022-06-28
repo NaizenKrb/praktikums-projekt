@@ -36,7 +36,7 @@ buttonContainer.forEach((entry) =>{
 const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
     entry.addEventListener("click", () => {
-        if(monthIndex !== date.getMonth()) {
+        if(monthIndex !== date.getMonth() || currentYear !== date.getFullYear()) {
             console.log("Month changed");
             monthIndex = date.getMonth();
             currentYear = date.getFullYear();
@@ -92,7 +92,7 @@ function getDaysPlusWeekday(monthIndex, year) {
     let colStartNextMonth;
 
     let getFillDaysOfLastMonth = daysLastMonth;
-    let output;
+    let output = [];
 
     function fillWithPreviousMonth() {
         for (let i = colStart - 1; i >= 0; i--) {
@@ -101,7 +101,7 @@ function getDaysPlusWeekday(monthIndex, year) {
             // Tageszahl für die Füllung vom letzten Monat
             console.log(getFillDaysOfLastMonth, colStartLastMonth);
             let lastMonthDay = getFillDaysOfLastMonth + ",";
-            output =
+            output.push(
                 `
                 <div class="col-start-${colStartLastMonth + 1} col-span-1 row-start-${1} border-r border-b border-slate-600 bg-slate-400">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-500 text-gray-800 truncate">
@@ -110,14 +110,14 @@ function getDaysPlusWeekday(monthIndex, year) {
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
-            `;
-
-            document.querySelector("#days").innerHTML += output;
+            `);
             getFillDaysOfLastMonth--;
         }
     }
 
     fillWithPreviousMonth();
+    output.reverse();
+    document.querySelector("#days").innerHTML += output.join("");
     for (let i = 1; i <= days; i++) {
         const weekDay = getWeekDay(year, monthIndex, i);
         let date = i;
@@ -169,6 +169,8 @@ function getDaysPlusWeekday(monthIndex, year) {
             if(colStart + i === 0) {
                 colStart = 6;
                 fillWithPreviousMonth();
+                output.reverse();
+                document.querySelector("#days").innerHTML += output.join("");
             };
             output = (weekEnd ?? normalDay) ?
                 `
@@ -195,6 +197,27 @@ function getDaysPlusWeekday(monthIndex, year) {
             }
         document.querySelector("#days").innerHTML += output;
     }
+    output = [];
+    let lastDayOfMonth = getWeekDay(year, monthIndex, days);
+    colStart = 6 - weekDays.indexOf(lastDayOfMonth);
+    if(colStart != 6) {
+        console.log(colStart, "Test");
+        for(let i = 0; i <= colStart; i++){
+            let date = i + 1;
+            output.push(
+                `
+                <div class="border-r border-b border-slate-600 bg-slate-400">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-500 text-gray-800 truncate">
+                    ${date}.
+                    </div>
+                    <div class="py-1 h-24 min-h-[12rem]"></div>
+                </div>
+            `);
+        }
+        document.querySelector("#days").innerHTML += output.join("");
+    }
+
+
 }
 
 function getDaysInMonth(year, month) {
