@@ -68,13 +68,13 @@ if (lastButtonClicked != null) {
 }
 
 // Modal Part ---------------------------------------------------------------
-var openmodal = document.querySelectorAll('.addEvent');
-for (var i = 0; i < openmodal.length; i++) {
-    openmodal[i].addEventListener('click', function(event){
-        event.preventDefault()
-        toggleModal()
-    })
-};
+let openmodal = document.querySelectorAll(".addEvent");
+openmodal.forEach((entry) =>{
+    entry.addEventListener("click", function (event) {
+        event.preventDefault();
+        toggleModal();
+    });
+});
 
 const overlay = document.querySelector('.modal-overlay')
 overlay.addEventListener('click', toggleModal)
@@ -296,16 +296,7 @@ function setLastMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
-}
-
-const eventButton = document.getElementById("addEvent");
-eventButton.addEventListener("click", addEvent);
-
-function addEvent() {
-    console.log("Event added");
-    
-    
-}
+};
 
 // Function to place the Days in the correct order 
 // and fill the empty spaces with 
@@ -313,7 +304,6 @@ function addEvent() {
 
 function fillCalendar() {
     const days = getDaysInMonth(currentYear, monthIndex);
-
     const lastMonthDays = getDaysInMonth(currentYear, monthIndex - 1);
     const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 
