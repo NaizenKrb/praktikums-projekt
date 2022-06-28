@@ -110,7 +110,7 @@ function getDaysPlusWeekday(monthIndex, year) {
     let colStart,
         rowStart;
 
-    if(firstDayOfMonth !== "Montag") {
+    if(firstDayOfMonth !== "Monday") {
          colStart = weekDays.indexOf(firstDayOfMonth) - 1;
     } else {
          colStart = 0;
@@ -149,8 +149,7 @@ function getDaysPlusWeekday(monthIndex, year) {
         const weekDay = getWeekDay(year, monthIndex, i);
         let date = i;
         let day = weekDay + ", " + date;
-        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
+        const weekEnd = weekDay === "Saturday" || weekDay === "Sunday";
 
         if ((i + colStart) > 7 && (i + colStart) < 15) {
             rowStart = 2;
@@ -287,8 +286,6 @@ function fillCalendar() {
     const nextMonthDays = getDaysInMonth(currentYear, monthIndex + 1);
 
     const weekDay = getWeekDay(currentYear, monthIndex, currentDay);
-    const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-    const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
     let output = "";
 
     
@@ -296,9 +293,8 @@ function fillCalendar() {
         const weekDay = getWeekDay(currentYear, monthIndex, i);
         const date = i;
         const day = weekDay + ", " + date;
-        const weekEnd = weekDay === "Samstag" || weekDay === "Sonntag";
-        const normalDay = weekDay !== "Samstag" && weekDay !== "Sonntag";
-        let output = (weekEnd ?? normalDay) ?
+        const weekEnd = weekDay === "Saturday" || weekDay === "Sunday";
+        let output = weekEnd == true ?
         `
         <div class="border-r border-b border-slate-600 bg-slate-300">
             <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-800 truncate">
