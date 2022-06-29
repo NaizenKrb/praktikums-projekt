@@ -121,10 +121,10 @@ function addEvent() {
     console.log(obj);
     console.log(localStorage);
     
-
-    localStorage.forEach((entry) => {
-        console.log(entry);
-    });
+    // Loop through all localStorage items
+    for (var i = 0; i < localStorage.length; i++){
+        console.log(localStorage.getItem(localStorage.key(i)));
+    }
     //toggleModal();
 }
 
