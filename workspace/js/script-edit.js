@@ -95,6 +95,9 @@ document.onkeydown = function(evt) {
     if (isEscape && document.body.classList.contains('modal-active')) {
         toggleModal();
     }
+    if (isEscape && document.body.classList.contains('overflow-hidden')) {
+        toggleModal();
+    }
 };
 
 function toggleModal () {
@@ -103,6 +106,7 @@ function toggleModal () {
     modal.classList.toggle('opacity-0');
     modal.classList.toggle('pointer-events-none');
     body.classList.toggle('modal-active');
+    body.classList.toggle('overflow-hidden');
 }
 // End of Modal Part ---------------------------------------------------------
 const addButton = document.querySelector(".addButton");
@@ -116,13 +120,11 @@ function addEvent() {
     let name = document.querySelector(".name").value;
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
-
-    localStorage.setItem("events", jsonEvent);
-
+    
     jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate};
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
-    console.log(localStorage);
+    console.log(localStorage.getItem('events'));
     console.log(jsonEventList);
     console.log("spacer");
     //toggleModal();
