@@ -17,8 +17,6 @@ let currentMonth = months[monthIndex];
 let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
-//let viewButton = document.querySelectorAll(".viewButton");
-
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
 
 buttonContainer.forEach((entry) =>{
