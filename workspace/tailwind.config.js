@@ -2,7 +2,8 @@
 module.exports = {
   content: [
       "./src/**/*.{html,js}",
-      "./img/**/*.{png,jpg,jpeg,gif,webp,svg}"
+      "./img/**/*.{png,jpg,jpeg,gif,webp,svg}",
+      "./js/**/*.js"
   ],
   theme: {
     extend: {},

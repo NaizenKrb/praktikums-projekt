@@ -162,7 +162,7 @@ function getDaysPlusWeekday(monthIndex, year) {
         const dayFormat = new Intl.DateTimeFormat('de-AT', {
             day: 'numeric',
             weekday: 'short',
-            month: 'long'
+            month: 'short'
         }).format(startDate);
 
         // HTML Inhalt
