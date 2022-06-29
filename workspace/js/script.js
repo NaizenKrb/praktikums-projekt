@@ -217,8 +217,8 @@ function getDaysPlusWeekday(monthIndex, year) {
             output.push(
             current?
                 `
-                <div class="col-span-1 border-r border-slate-600 bg-slate-50 group hover:bg-slate-300">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-200 group-hover:bg-slate-400 truncate">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-50 group hover:bg-slate-300 active:bg-slate-200">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-200 truncate group-hover:bg-slate-400 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
                     <div class="vacationInput py-1 min-h-[12rem] break-words">
