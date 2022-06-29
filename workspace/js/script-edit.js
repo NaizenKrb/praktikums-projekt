@@ -157,6 +157,8 @@ function getDaysPlusWeekday(monthIndex, year) {
         // Der aktuelle Monat / das aktuelle Jahr, basierend auf die Funktions-Argumente
         const current = startDate.getMonth() === monthIndex && startDate.getFullYear() === year;
 
+        const isWeekEnd = startDate.getDay() === 6 || startDate.getDay() === 0;
+
         // Die folgende Funktion "übersetzt" das aktuelle Date-Object auf Österreichisch (um die Kollegen zu ärgern).
         // Intl.DateTimeFormat -> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
         const dayFormat = new Intl.DateTimeFormat('de-AT', {
@@ -165,10 +167,24 @@ function getDaysPlusWeekday(monthIndex, year) {
             month: 'short'
         }).format(startDate);
 
+
         // HTML Inhalt
-        output.push(
+        if(isWeekEnd && current) {
+            output.push(
+                `
+                <div class="col-span-1 border-r border-b border-slate-600 bg-slate-300">
+                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-500 truncate">
+                        ${dayFormat}
+                    </div>
+                    <div class="py-1 min-h-[12rem] break-words">
+                    </div>
+                </div>
+                `
+            )
+        } else {
+            output.push(
             current?
-            `
+                `
                 <div class="col-span-1 border-r border-b border-slate-600 bg-slate-50">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
                         ${dayFormat}
@@ -178,15 +194,15 @@ function getDaysPlusWeekday(monthIndex, year) {
                     </div>
                 </div>
             `:
-            `
-                <div class="border-r border-b border-slate-600 bg-slate-400">
+                `
+                <div class="col-span-1 border-r border-b border-slate-600 bg-slate-400">
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-500 text-gray-800 truncate">
-                    ${dayFormat}
+                        ${dayFormat}
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
-            `
-        );
+            `)
+        }
 
         // Der While-Loop ändert die bestehenden Vergleichswerte nicht, daher müssen wir das tun:
         startDate.setDate(startDate.getDate() + 1);
