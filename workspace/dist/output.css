@@ -781,10 +781,6 @@ video {
   max-width: 80rem;
 }
 
-.border-collapse {
-  border-collapse: collapse;
-}
-
 .origin-top-right {
   transform-origin: top right;
 }

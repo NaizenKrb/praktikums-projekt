@@ -105,6 +105,28 @@ function toggleModal () {
     body.classList.toggle('modal-active');
 }
 // End of Modal Part ---------------------------------------------------------
+const addButton = document.querySelector(".addButton");
+addButton.addEventListener("click", addEvent);
+
+let jsonEvent;
+function addEvent() {
+    let name = document.querySelector(".name").value;
+    let startDate = document.querySelector(".startDate").value;
+    let endDate = document.querySelector(".endDate").value;
+
+    jsonEvent = JSON.stringify({name: name, start: startDate, end: endDate});
+    localStorage.setItem(`${name}`, jsonEvent);
+
+    let obj = JSON.parse(localStorage.getItem(`${name}`));
+    console.log(obj);
+    console.log(localStorage);
+    
+
+    localStorage.forEach((entry) => {
+        console.log(entry);
+    });
+    //toggleModal();
+}
 
 // Get all the Dates + the Weekday
 function getDaysPlusWeekday(monthIndex, year) {
