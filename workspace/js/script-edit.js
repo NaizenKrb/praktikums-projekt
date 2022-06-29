@@ -109,22 +109,22 @@ const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
 let jsonEvent;
+
+let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
+
 function addEvent() {
     let name = document.querySelector(".name").value;
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
 
-    jsonEvent = JSON.stringify({name: name, start: startDate, end: endDate});
-    localStorage.setItem(`${name}`, jsonEvent);
+    localStorage.setItem("events", jsonEvent);
 
-    let obj = JSON.parse(localStorage.getItem(`${name}`));
-    console.log(obj);
+    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate};
+    localStorage.setItem("events", JSON.stringify(jsonEventList));
+
     console.log(localStorage);
-    
-    // Loop through all localStorage items
-    for (var i = 0; i < localStorage.length; i++){
-        console.log(localStorage.getItem(localStorage.key(i)));
-    }
+    console.log(jsonEventList);
+    console.log("spacer");
     //toggleModal();
 }
 
@@ -211,7 +211,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                     <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
                         ${dayFormat}
                     </div>
-                    <div class="py-1 min-h-[12rem] break-words">
+                    <div class="vacationInput py-1 min-h-[12rem] break-words">
                         "Here you can add some content"
                     </div>
                 </div>
