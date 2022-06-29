@@ -196,8 +196,8 @@ function getDaysPlusWeekday(monthIndex, year) {
         if(isWeekEnd && current) {
             output.push(
                 `
-                <div class="col-span-1 border-r border-b border-slate-600 bg-slate-300">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-400 text-gray-500 truncate">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-300">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -209,8 +209,8 @@ function getDaysPlusWeekday(monthIndex, year) {
             output.push(
             current?
                 `
-                <div class="col-span-1 border-r border-b border-slate-600 bg-slate-50">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-200  truncate">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-50">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-200  truncate">
                         ${dayFormat}
                     </div>
                     <div class="vacationInput py-1 min-h-[12rem] break-words">
@@ -219,8 +219,8 @@ function getDaysPlusWeekday(monthIndex, year) {
                 </div>
             `:
                 `
-                <div class="col-span-1 border-r border-b border-slate-600 bg-slate-400">
-                    <div class="py-1 px-3 border-b border-slate-600 bg-slate-500 text-gray-800 truncate">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-400">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-500 text-gray-800 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
