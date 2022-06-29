@@ -194,8 +194,8 @@ function getDaysPlusWeekday(monthIndex, year) {
 
         // HTML Inhalt
         if(isWeekEnd && current) {
-            output.push(
-                `
+            if(startDate.getDay() === 6) {
+                output.push(`
                 <div class="col-span-1 border-r border-slate-600 bg-slate-300">
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
@@ -203,8 +203,18 @@ function getDaysPlusWeekday(monthIndex, year) {
                     <div class="py-1 min-h-[12rem] break-words">
                     </div>
                 </div>
-                `
-            )
+                `);
+            } else {
+                output.push(`
+                <div class="col-span-1 bg-slate-300">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                        ${dayFormat}
+                    </div>
+                    <div class="py-1 min-h-[12rem] break-words">
+                    </div>
+                </div>
+                `);
+            }
         } else {
             output.push(
             current?
