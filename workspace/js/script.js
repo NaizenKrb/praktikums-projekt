@@ -128,6 +128,33 @@ function addEvent() {
     //toggleModal();
 }
 
+function loadEvents(currentMonth, currentYear) {
+    let name,
+        start,
+        end;
+    let vacationBox = document.querySelectorAll(".vacationBox");
+
+    let events = JSON.parse(localStorage.getItem('events'));
+    Object.keys(events).forEach((key) => {
+        let value = events[key];
+        name = value.name;
+        start = value.start;
+        end = value.end;
+        console.log(name);
+        console.log(start);
+        console.log(end);
+    });
+
+    vacationBox.forEach((entry) =>{
+        entry.innerHTML = `
+        <div class="my-2 px-3 text-red-900 bg-red-300">
+            ${name}
+        </div>`;
+    });
+    console.log(events);
+}
+
+
 // Get all the Dates + the Weekday
 function getDaysPlusWeekday(monthIndex, year) {
 
@@ -221,7 +248,7 @@ function getDaysPlusWeekday(monthIndex, year) {
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-200 truncate group-hover:bg-slate-400 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="vacationInput py-1 min-h-[12rem] break-words">
+                    <div class="vacationBox py-1 min-h-[12rem] break-words">
                         "Here you can add some content"
                     </div>
                 </div>
@@ -264,6 +291,7 @@ function setNextMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
+    loadEvents();
 }
 
 function setLastMonth() {
@@ -276,6 +304,7 @@ function setLastMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     getDaysPlusWeekday(monthIndex, currentYear);
+    loadEvents();
 }
 
 console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
