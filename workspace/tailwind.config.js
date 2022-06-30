@@ -6,7 +6,16 @@ module.exports = {
       "./js/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "web": "#00b0e6",
+        "media": "#ce4c34",
+        "network": "#08865f",
+        "app": "#e8bb40",
+        "research": "#884de1",
+        "consulting": "#7e8e9f",
+      },
   },
   plugins: ["tailwind-scrollbar"],
+  }
 }
