@@ -19,6 +19,6 @@ module.exports = {
         "consulting": "#7e8e9f",
       },
   },
-  plugins: ["tailwind-scrollbar"],
+  plugins: [require("@tailwindcss/forms"),],
   }
 }
