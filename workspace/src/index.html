@@ -76,7 +76,7 @@
     <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
       <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
 
-      <div class="modal-container w-11/12 md:max-w-md sm:max-h-[80vh] mx-auto shadow-lg z-50 overflow-y-auto">
+      <div class="modal-container w-11/12 md:max-w-md sm:max-h-[80vh] mx-auto shadow-lg z-50 overflow-y-auto scrollbar">
 
         <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
           <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -118,21 +118,22 @@
             <label class="my-3 p-2 border border-gray-300 rounded-md shadow-sm flex flex-col justify-center text-lg font-medium">
               <span>Department:</span>
               <label class="flex justify-evenly gap-2 m-1">
-                <select class="border border-gray-300 rounded-md text-center">
-                  <option class="bg-web">Web</option>
-                  <option class="bg-media">Media</option>
-                  <option class="bg-app">App</option>
-                  <option class="bg-network">Network</option>
-                  <option class="bg-research">Research</option>
-                  <option class="bg-consulting">Consulting</option>
-
+                <select class="form-multiselect scrollbar border border-gray-300 rounded-md text-center block w-full h-24" multiple style="text-align: -webkit-center">
+                  <option class="bg-web rounded-md w-11/12 pt-2 pb-1 my-1 border border-gray-300">Web</option>
+                  <option class="bg-media rounded-md w-11/12 py-1 my-1 border border-gray-300">Media</option>
+                  <option class="bg-app rounded-md w-11/12 py-1 my-1 border border-gray-300">App</option>
+                  <option class="bg-network rounded-md w-11/12 py-1 my-1 border border-gray-300">Network</option>
+                  <option class="bg-research rounded-md w-11/12 py-1 my-1 border border-gray-300">Research</option>
+                  <option class="bg-consulting rounded-md w-11/12 pt-1 pb-2 my-1 border border-gray-300">Consulting</option>
                 </select>
+                <!--
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-web shadow-md focus:ring-2 focus:ring-web focus:ring-offset-2"></button>
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-media shadow-md focus:ring-2 focus:ring-media focus:ring-offset-2"></button>
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-app shadow-md focus:ring-2 focus:ring-app focus:ring-offset-2"></button>
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-network shadow-md focus:ring-2 focus:ring-network focus:ring-offset-2"></button>
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-research shadow-md focus:ring-2 focus:ring-research focus:ring-offset-2"></button>
                 <button class="border border-gray-300 rounded-full w-8 h-8 bg-consulting shadow-md focus:ring-2 focus:ring-consulting focus:ring-offset-2"></button>
+                -->
               </label>
             </label>
           </form>
