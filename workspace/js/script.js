@@ -40,7 +40,7 @@ thisMonthButton.forEach((entry) =>{
             currentYear = date.getFullYear();
             document.querySelector("#days").innerHTML = "";
             document.querySelector("#month").innerHTML = currentMonth + " " + currentYear;
-            getDaysPlusWeekday(monthIndex, currentYear);
+            placeDays(monthIndex, currentYear);
             loadEvents();
         } else {
             console.log("Month not changed");
@@ -50,7 +50,7 @@ thisMonthButton.forEach((entry) =>{
 });
 
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
-getDaysPlusWeekday(monthIndex, currentYear);
+placeDays(monthIndex, currentYear);
 
 const nextButtonClicked = document.getElementById("next")
 if (nextButtonClicked != null) {
@@ -62,7 +62,7 @@ if (nextButtonClicked != null) {
 const lastButtonClicked = document.getElementById("last")
 if (lastButtonClicked != null) {
     lastButtonClicked.addEventListener("click", function() {
-        setLastMonth();
+        setPreviousMonth();
     });
 }
 
@@ -119,8 +119,9 @@ function addEvent() {
     let name = document.querySelector(".name").value;
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
+    let department; 
     
-    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate};
+    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate,};
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     console.log(localStorage.getItem('events'));
@@ -164,7 +165,7 @@ function loadEvents(currentMonth, currentYear) {
 
 
 // Get all the Dates + the Weekday
-function getDaysPlusWeekday(monthIndex, year) {
+function placeDays(monthIndex, year) {
 
     // Start-Datum mit Jahr, Monat und dem 1. Tag
     const startDate = new Date(year, monthIndex, 1);
@@ -270,11 +271,9 @@ function getDaysPlusWeekday(monthIndex, year) {
                 </div>
             `)
         }
-
         // Der While-Loop ändert die bestehenden Vergleichswerte nicht, daher müssen wir das tun:
         startDate.setDate(startDate.getDate() + 1);
     }
-
     document.querySelector("#days").innerHTML += output.join("");
 }
 
@@ -298,11 +297,11 @@ function setNextMonth() {
     }
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
-    getDaysPlusWeekday(monthIndex, currentYear);
+    placeDays(monthIndex, currentYear);
     loadEvents();
 }
 
-function setLastMonth() {
+function setPreviousMonth() {
     if (monthIndex === 0) {
         monthIndex = 11;
         currentYear -= 1;
@@ -311,7 +310,7 @@ function setLastMonth() {
     }
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
-    getDaysPlusWeekday(monthIndex, currentYear);
+    placeDays(monthIndex, currentYear);
     loadEvents();
 }
 
