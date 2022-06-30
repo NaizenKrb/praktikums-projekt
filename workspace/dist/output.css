@@ -1483,6 +1483,36 @@ video {
   --tw-ring-color: rgb(0 75 124 / var(--tw-ring-opacity));
 }
 
+.focus\:ring-web:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(0 176 230 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-media:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(206 76 52 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-app:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(232 187 64 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-network:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(8 134 95 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-research:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(136 77 225 / var(--tw-ring-opacity));
+}
+
+.focus\:ring-consulting:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(126 142 159 / var(--tw-ring-opacity));
+}
+
 .focus\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
