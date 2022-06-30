@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       colors: {
         "netzfactor": "#004B7C",
+        "netzfactor-light": "#0068AD",
+        "netzfactor-dark": "#1D4661",
         "web": "#00b0e6",
         "media": "#ce4c34",
         "network": "#08865f",
