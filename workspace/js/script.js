@@ -41,6 +41,7 @@ thisMonthButton.forEach((entry) =>{
             document.querySelector("#days").innerHTML = "";
             document.querySelector("#month").innerHTML = currentMonth + " " + currentYear;
             getDaysPlusWeekday(monthIndex, currentYear);
+            loadEvents();
         } else {
             console.log("Month not changed");
             /// Alert or smth else later
@@ -125,6 +126,7 @@ function addEvent() {
     console.log(localStorage.getItem('events'));
     console.log(jsonEventList);
     console.log("spacer");
+    loadEvents();
     //toggleModal();
 }
 
@@ -133,6 +135,7 @@ function loadEvents(currentMonth, currentYear) {
         start,
         end;
     let vacationBox = document.querySelectorAll(".vacationBox");
+    let output = [];
 
     let events = JSON.parse(localStorage.getItem('events'));
     Object.keys(events).forEach((key) => {
@@ -143,13 +146,18 @@ function loadEvents(currentMonth, currentYear) {
         console.log(name);
         console.log(start);
         console.log(end);
+        output.push(
+        `
+        <div class="my-2 px-3 text-red-900 bg-red-300">
+            ${name}
+        </div>
+        `
+        )
     });
 
     vacationBox.forEach((entry) =>{
-        entry.innerHTML = `
-        <div class="my-2 px-3 text-red-900 bg-red-300">
-            ${name}
-        </div>`;
+        entry.innerHTML = "";
+        entry.innerHTML += output.join("");
     });
     console.log(events);
 }
