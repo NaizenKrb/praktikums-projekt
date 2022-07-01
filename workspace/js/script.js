@@ -144,7 +144,7 @@ function addEvent() {
         return;
     }
 
-    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department};
+    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department}; // [Fullname later ?]
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     console.log(localStorage.getItem('events'));
@@ -194,6 +194,7 @@ function loadEvents(currentMonth, currentYear) {
 // Get all the Dates + the Weekday
 function placeDays(monthIndex, year) {
 
+
     // Start-Datum mit Jahr, Monat und dem 1. Tag
     const startDate = new Date(year, monthIndex, 1);
 
@@ -237,10 +238,11 @@ function placeDays(monthIndex, year) {
     // Datum als "[JAHR]-[MONAT]-[TAG]", welches wir mit `≤` gut mit dem Ende vergleichen können:
     const output = [];
     const until = endDate.toJSON().slice(0, 10);        // Da sich endDate nicht ändern, können wir es als Konstante festlegen
+    let current;
     while(startDate.toJSON().slice(0, 10) <= until) {
 
         // Der aktuelle Monat / das aktuelle Jahr, basierend auf die Funktions-Argumente
-        const current = startDate.getMonth() === monthIndex && startDate.getFullYear() === year;
+        current = startDate.getMonth() === monthIndex && startDate.getFullYear() === year;
 
         const isWeekEnd = startDate.getDay() === 6 || startDate.getDay() === 0;
 
