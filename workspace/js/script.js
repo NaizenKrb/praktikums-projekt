@@ -250,13 +250,16 @@ function placeDays(monthIndex, year) {
             month: 'short'
         }).format(startDate);
 
+        const day = new Intl.DateTimeFormat('de-AT', {
+            day: 'numeric'
+        }).format(startDate);
 
         // HTML Inhalt
         if(isWeekEnd && current) {
             if(startDate.getDay() === 6) {
                 output.push(`
-                <div class="col-span-1 border-r border-slate-600 bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                <div class="weekend col-span-1 border-r border-slate-600 bg-slate-200">
+                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -265,8 +268,8 @@ function placeDays(monthIndex, year) {
                 `);
             } else {
                 output.push(`
-                <div class="col-span-1 bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                <div class="weekend col-span-1 bg-slate-200">
+                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -279,7 +282,7 @@ function placeDays(monthIndex, year) {
             current?
                 `
                 <div class="col-span-1 border-r border-slate-600 bg-slate-300 group hover:bg-slate-400 active:bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
+                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
                     <div class="vacationBox py-1 min-h-[12rem] break-words">
