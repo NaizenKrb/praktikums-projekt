@@ -176,7 +176,7 @@ function loadEvents(currentMonth, currentYear) {
         console.log(department);
         output.push(
         `
-        <div class="my-2 px-3 text-red-900 bg-${department}">
+        <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
             ${name}
         </div>
         `
