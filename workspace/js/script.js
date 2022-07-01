@@ -9,6 +9,9 @@ const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
 
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
+const netzfactorColors = ["web","meida","app","network","research"];
+
+
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentDay = date.getDate();
@@ -110,8 +113,11 @@ function toggleModal () {
     body.classList.toggle('overflow-hidden');
 }
 // End of Modal Part ---------------------------------------------------------
-const addButton = document.querySelector(".addButton");
-addButton.addEventListener("click", addEvent);
+
+function randomColor() {
+    let random = Math.floor(Math.random() * netzfactorColors.length);
+    return netzfactorColors[random];
+}
 
 function randomLetter() {
     let random = Math.floor(Math.random() * alphabet.length);
@@ -120,13 +126,16 @@ function randomLetter() {
 
 let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
 
+const addButton = document.querySelector(".addButton");
+addButton.addEventListener("click", addEvent);
+
 function addEvent() {
     let name = randomLetter() + randomLetter()
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
-    let department; 
+    let department = randomColor();
     
-    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate,};
+    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department};
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     console.log(localStorage.getItem('events'));
@@ -139,7 +148,8 @@ function addEvent() {
 function loadEvents(currentMonth, currentYear) {
     let name,
         start,
-        end;
+        end,
+        department;
     let vacationBox = document.querySelectorAll(".vacationBox");
     let output = [];
 
@@ -149,12 +159,15 @@ function loadEvents(currentMonth, currentYear) {
         name = value.name;
         start = value.start;
         end = value.end;
+        department = value.department;
+
         console.log(name);
         console.log(start);
         console.log(end);
+        console.log(department);
         output.push(
         `
-        <div class="my-2 px-3 text-red-900 bg-red-300">
+        <div class="my-2 px-3 text-red-900 bg-${department}">
             ${name}
         </div>
         `
