@@ -9,7 +9,7 @@ const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
 
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-const netzfactorColors = ["web","meida","app","network","research"];
+const netzfactorColors = ["web","media","app","network","research"];
 
 
 let date = new Date();
@@ -145,10 +145,7 @@ function addEvent() {
     jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department}; // [Fullname later ?]
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
-    console.log(localStorage.getItem('events'));
-    console.log(jsonEventList);
-    console.log("spacer");
-    loadEvents();
+    placeDays(monthIndex, currentYear);
     //toggleModal();
 }
 
@@ -168,7 +165,7 @@ function loadEvents(currentYear, startOfMonth, endOfMonth) {
         department = value.department;
 
         if(start >= startOfMonth && end <= endOfMonth) {
-            console.log(start + end);
+            console.log("start "+ start + " " + "ende " + end);
             output.push(
                 `
                 <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
@@ -177,9 +174,6 @@ function loadEvents(currentYear, startOfMonth, endOfMonth) {
                 `
                 )
             }
-
-        
-
     });
 
     
@@ -192,6 +186,7 @@ function loadEvents(currentYear, startOfMonth, endOfMonth) {
 
 // Get all the Dates + the Weekday
 function placeDays(monthIndex, year) {
+    document.querySelector("#days").innerHTML = "";
     // Start-Datum mit Jahr, Monat und dem 1. Tag
     const startDate = new Date(Date.UTC(year, monthIndex, 1));
 
