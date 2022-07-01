@@ -18,6 +18,6 @@ module.exports = {
         "research": "#884de1",
       },
   },
-  plugins: [require("@tailwindcss/forms"),],
+  plugins: [],
   }
 }

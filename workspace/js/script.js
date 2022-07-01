@@ -135,6 +135,15 @@ function addEvent() {
     let endDate = document.querySelector(".endDate").value;
     let department = randomColor();
     
+    if (startDate === "" || endDate === "") {
+        alert("Bitte Datum eingeben");
+        return;
+    }
+    else if (startDate > endDate) {
+        alert("Startdatum muss vor dem Enddatum liegen");
+        return;
+    }
+
     jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department};
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
