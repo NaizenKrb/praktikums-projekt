@@ -302,6 +302,7 @@ function placeDays(monthIndex, year) {
         startDate.setDate(startDate.getDate() + 1);
     }
     document.querySelector("#days").innerHTML += output.join("");
+    loadEvents(current, currentYear);
 }
 
 function getDaysInMonth(year, month) {
@@ -325,7 +326,6 @@ function setNextMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     placeDays(monthIndex, currentYear);
-    loadEvents();
 }
 
 function setPreviousMonth() {
@@ -338,7 +338,6 @@ function setPreviousMonth() {
     document.querySelector("#month").innerHTML = months[monthIndex] + " " + currentYear;
     document.querySelector("#days").innerHTML = "";
     placeDays(monthIndex, currentYear);
-    loadEvents();
 }
 
 console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
