@@ -47,7 +47,6 @@ thisMonthButton.forEach((entry) =>{
             document.querySelector("#days").innerHTML = "";
             document.querySelector("#month").innerHTML = currentMonth + " " + currentYear;
             placeDays(monthIndex, currentYear);
-            loadEvents();
         } else {
             console.log("Month not changed");
             /// Alert or smth else later
