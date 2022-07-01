@@ -23,6 +23,7 @@ let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
+let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
 
 buttonContainer.forEach((entry) =>{
     entry.querySelector('.viewButton').addEventListener('click', () => {
@@ -124,8 +125,6 @@ function randomLetter() {
     return alphabet[random];
 };
 
-let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
-
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
@@ -154,7 +153,7 @@ function addEvent() {
     //toggleModal();
 }
 
-function loadEvents(currentMonth, currentYear) {
+function loadEvents(currentYear, startOfMonth, endOfMonth) {
     let name,
         start,
         end,
@@ -162,41 +161,45 @@ function loadEvents(currentMonth, currentYear) {
     let vacationBox = document.querySelectorAll(".vacationBox");
     let output = [];
 
-    let events = JSON.parse(localStorage.getItem('events'));
-    Object.keys(events).forEach((key) => {
-        let value = events[key];
+    Object.keys(jsonEventList).forEach((key) => {
+        let value = jsonEventList[key];
         name = value.name;
         start = value.start;
         end = value.end;
         department = value.department;
 
-        output.push(
-        `
-        <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
-            ${name}
-        </div>
-        `
-        )
+        if(start >= startOfMonth && end <= endOfMonth) {
+            console.log(start + end);
+            output.push(
+                `
+                <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
+                    ${name}
+                </div>
+                `
+                )
+            }
+
+        
+
     });
 
+    
     vacationBox.forEach((entry) =>{
         entry.innerHTML = "";
         entry.innerHTML += output.join("");
     });
-    console.log(events);
 }
 
 
 // Get all the Dates + the Weekday
 function placeDays(monthIndex, year) {
-
-
     // Start-Datum mit Jahr, Monat und dem 1. Tag
-    const startDate = new Date(year, monthIndex, 1);
+    const startDate = new Date(Date.UTC(year, monthIndex, 1));
 
     // End-Datum, der "Nullte Tag" des folgenden Monats, ein kleiner Trick um einen Tag in die 
     // Vergangenheit zu springen und so das richtige End-Datum des Monats zu erhalten.
-    const endDate = new Date(year, monthIndex + 1, 0);
+    const endDate = new Date(Date.UTC(year, monthIndex + 1, 0));
+    const startOfMonth = startDate.toJSON().slice(0, 10)
 
     // Wenn das Start-Datum nicht bei Montag anfängt, dann gehen wir die notwendigen Tage mit einem
     // negativen Wert bei der `setDate` methode zurück. Das Problem hierbei: JavaScript bietet mit 
@@ -212,10 +215,10 @@ function placeDays(monthIndex, year) {
     // da wir allerdings bei Montag anfangen möchten, müssen wir diese Werte sortieren, und können
     // dadurch die Anzahl der vorherigen Tage ermitteln (-1, da wir beim aktuellen startDate
     // Objekt in die Vergangenheit springen möchten und daher 0-index basiert arbeiten):
+    
     if (startDate.getDay() !== 1) {
         startDate.setDate(-([1, 2, 3, 4, 5, 6, 0].indexOf(startDate.getDay()) - 1));
     }
-
     // Ähnlich können wir auch das Ende unseres Kalenders berechnen, müssen allerdings die Anzahl
     // der nachfolgenden Tage (bis Sonntag) auf das aktuelle End-Datum draufrechnen. Um diese Zahl 
     // zu ermitteln, rechnen wir die Position in unserem "sortierten Wochentag-array" gegen die
@@ -269,7 +272,7 @@ function placeDays(monthIndex, year) {
             } else {
                 output.push(`
                 <div class="weekend col-span-1 bg-slate-200">
-                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -282,10 +285,10 @@ function placeDays(monthIndex, year) {
             current?
                 `
                 <div class="col-span-1 border-r border-slate-600 bg-slate-300 group hover:bg-slate-400 active:bg-slate-200">
-                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="vacationBox py-1 min-h-[12rem] break-words">
+                    <div class="day-${day} vacationBox py-1 min-h-[12rem] break-words">
                         "Here you can add some content"
                     </div>
                 </div>
@@ -303,7 +306,7 @@ function placeDays(monthIndex, year) {
         startDate.setDate(startDate.getDate() + 1);
     }
     document.querySelector("#days").innerHTML += output.join("");
-    loadEvents(current, currentYear);
+    loadEvents(current, startOfMonth, until);
 }
 
 function getDaysInMonth(year, month) {
