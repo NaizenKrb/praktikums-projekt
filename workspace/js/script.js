@@ -170,10 +170,6 @@ function loadEvents(currentMonth, currentYear) {
         end = value.end;
         department = value.department;
 
-        console.log(name);
-        console.log(start);
-        console.log(end);
-        console.log(department);
         output.push(
         `
         <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
@@ -243,7 +239,7 @@ function placeDays(monthIndex, year) {
 
         // Der aktuelle Monat / das aktuelle Jahr, basierend auf die Funktions-Argumente
         current = startDate.getMonth() === monthIndex && startDate.getFullYear() === year;
-
+        console.log(current);
         const isWeekEnd = startDate.getDay() === 6 || startDate.getDay() === 0;
 
         // Die folgende Funktion "übersetzt" das aktuelle Date-Object auf Österreichisch (um die Kollegen zu ärgern).
