@@ -16,7 +16,6 @@ module.exports = {
         "network": "#08865f",
         "app": "#e8bb40",
         "research": "#884de1",
-        "consulting": "#7e8e9f",
       },
   },
   plugins: [require("@tailwindcss/forms"),],
