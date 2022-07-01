@@ -7,6 +7,8 @@ const months = ["January","February","March","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
+const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentDay = date.getDate();
@@ -111,12 +113,15 @@ function toggleModal () {
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
-let jsonEvent;
+function randomLetter() {
+    let random = Math.floor(Math.random() * alphabet.length);
+    return alphabet[random];
+};
 
 let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
 
 function addEvent() {
-    let name = document.querySelector(".name").value;
+    let name = randomLetter() + randomLetter()
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
     let department; 
