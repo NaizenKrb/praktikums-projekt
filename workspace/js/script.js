@@ -176,7 +176,7 @@ function loadEvents(startDate) {
             output.push(
                 `
                 <div data-initials="${initials + firstName + lastName}" class="mx-1 flex my-2 justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-full w-2/3 shadow-md
-                hover-event relative hover:scale-125 border border-solid border-transparent">
+                hover-event relative hover:scale-125 border-2 border-solid border-transparent">
                     <div class="flex">${initials}</div>
                     <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
                 </div>
@@ -313,7 +313,7 @@ function placeDays(monthIndex, year) {
                     if(current !== entry) {
 
                         entry.classList.remove("border-transparent");
-                        entry.classList.add("border-black");
+                        entry.classList.add("border-netzfactor");
                     }
             });
         });
@@ -321,7 +321,7 @@ function placeDays(monthIndex, year) {
                 document.querySelectorAll(`[data-initials="${current.dataset.initials}"]`).forEach((entry) => {
                     if(current !== entry) {
                         entry.classList.add("border-transparent");
-                        entry.classList.remove("border-black");
+                        entry.classList.remove("border-netzfactor");
                     }
             });
         });
