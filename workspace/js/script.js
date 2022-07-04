@@ -197,7 +197,6 @@ function placeDays(monthIndex, year) {
     // End-Datum, der "Nullte Tag" des folgenden Monats, ein kleiner Trick um einen Tag in die 
     // Vergangenheit zu springen und so das richtige End-Datum des Monats zu erhalten.
     const endDate = new Date(Date.UTC(year, monthIndex + 1, 0));
-    const startOfMonth = startDate.toJSON().slice(0, 10)
 
     // Wenn das Start-Datum nicht bei Montag anfängt, dann gehen wir die notwendigen Tage mit einem
     // negativen Wert bei der `setDate` methode zurück. Das Problem hierbei: JavaScript bietet mit 
@@ -236,7 +235,6 @@ function placeDays(monthIndex, year) {
     const output = [];
     const until = endDate.toJSON().slice(0, 10);        // Da sich endDate nicht ändern, können wir es als Konstante festlegen
     let current;
-    let day;
     while(startDate.toJSON().slice(0, 10) <= until) {
 
         // Der aktuelle Monat / das aktuelle Jahr, basierend auf die Funktions-Argumente
@@ -254,24 +252,15 @@ function placeDays(monthIndex, year) {
         let events;
 
         if (current) {
-            const day = new Intl.DateTimeFormat('de-AT', {
-                day: 'numeric'
-            }).format(startDate);
-            
-            console.log(day);
             events = loadEvents(startDate);
-
         }
-        day = new Intl.DateTimeFormat('de-AT', {
-            day: 'numeric'
-        }).format(startDate);
 
         // HTML Inhalt
         if(isWeekEnd && current) {
             if(startDate.getDay() === 6) {
                 output.push(`
                 <div class="weekend col-span-1 border-r border-slate-600 bg-slate-200">
-                    <div class="day-${day} py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -297,7 +286,7 @@ function placeDays(monthIndex, year) {
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="grid grid-cols-4 day-${day}vacationBox py-1 break-words mx-1">
+                    <div class="grid grid-cols-3 py-1 break-words mx-1">
                         ${events? events.join(""): "&nbspNo Events"}
                     </div>
                 </div>
@@ -351,5 +340,3 @@ function setPreviousMonth() {
     document.querySelector("#days").innerHTML = "";
     placeDays(monthIndex, currentYear);
 }
-
-console.log("Derzeit ist der Monat " + currentMonth + "\nDer Monat hat so viele Tage: " + daysInCurrentMonth + "\nDas ist unser Tag: " + currentDay  + "\nDas ist welcher Tag es in der Woche ist: " + weekDay);
