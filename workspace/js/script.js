@@ -247,11 +247,11 @@ function placeDays(monthIndex, year) {
     const output = [];
     const until = endDate.toJSON().slice(0, 10);        // Da sich endDate nicht ändern, können wir es als Konstante festlegen
     let current;
+    let day;
     while(startDate.toJSON().slice(0, 10) <= until) {
 
         // Der aktuelle Monat / das aktuelle Jahr, basierend auf die Funktions-Argumente
         current = startDate.getMonth() === monthIndex && startDate.getFullYear() === year;
-        console.log(current);
         const isWeekEnd = startDate.getDay() === 6 || startDate.getDay() === 0;
 
         // Die folgende Funktion "übersetzt" das aktuelle Date-Object auf Österreichisch (um die Kollegen zu ärgern).
