@@ -180,14 +180,15 @@ function loadEvents(startDate) {
 
         const firstLetterOfLastName = lastName.charAt(0);
         const restOfLastName = lastName.substring(1);
+        const initials = firstLetterOfName + firstLetterOfLastName;
 
         console.log(firstLetterOfName, restOfName, firstLetterOfLastName, restOfLastName);
         if(currentDate >= start && currentDate <= end) {
             //console.log("start "+ start + " " + "ende " + end);
             output.push(
                 `
-                <div class="mx-1 flex my-2 text-black justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
-                    <div class="flex">${firstLetterOfName}${firstLetterOfLastName}</div>
+                <div data-${initials} class="mx-1 flex my-2 text-${textColor} justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
+                    <div class="flex">${initials}</div>
                     <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
                 </div>
                 `
