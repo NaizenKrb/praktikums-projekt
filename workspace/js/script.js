@@ -152,19 +152,20 @@ function addEvent() {
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     placeDays(monthIndex, currentYear);
-    //toggleModal();
+    toggleModal();
 }
 
-function loadEvents(currentYear, startOfMonth, endOfMonth) {
+function loadEvents(startDate) {
     let name,
         start,
         end,
         department;
-    let vacationBox = document.querySelectorAll(".vacationBox");
     let output = [];
 
-    Object.keys(jsonEventList).forEach((key) => {
-        let value = jsonEventList[key];
+    const currentDate = startDate.toJSON().slice(0, 10);
+
+    
+    Object.entries(jsonEventList).forEach(([key, value ]) => {
         name = value.name;
         start = value.start;
         end = value.end;
@@ -261,7 +262,18 @@ function placeDays(monthIndex, year) {
             month: 'short'
         }).format(startDate);
 
-        const day = new Intl.DateTimeFormat('de-AT', {
+        let events;
+
+        if (current) {
+            const day = new Intl.DateTimeFormat('de-AT', {
+                day: 'numeric'
+            }).format(startDate);
+            
+            console.log(day);
+            events = loadEvents(startDate);
+
+        }
+        day = new Intl.DateTimeFormat('de-AT', {
             day: 'numeric'
         }).format(startDate);
 
@@ -296,8 +308,8 @@ function placeDays(monthIndex, year) {
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="day-${day} vacationBox py-1 min-h-[12rem] break-words">
-                        "Here you can add some content"
+                    <div class="grid grid-cols-4 day-${day}vacationBox py-1 break-words mx-1">
+                        ${events? events.join(""): "&nbspNo Events"}
                     </div>
                 </div>
             `:
@@ -314,7 +326,6 @@ function placeDays(monthIndex, year) {
         startDate.setDate(startDate.getDate() + 1);
     }
     document.querySelector("#days").innerHTML += output.join("");
-    loadEvents(current, startOfMonth, until);
 }
 
 function getDaysInMonth(year, month) {
