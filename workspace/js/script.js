@@ -10,6 +10,7 @@ const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
 const netzfactorColors = ["web","media","app","network","research"];
+const netzfactorDepartmens = ["web","media","app","network","research"];
 
 
 let date = new Date();
@@ -114,9 +115,9 @@ function toggleModal () {
 }
 // End of Modal Part ---------------------------------------------------------
 
-function randomColor() {
-    let random = Math.floor(Math.random() * netzfactorColors.length);
-    return netzfactorColors[random];
+function randomDepartment() {
+    let random = Math.floor(Math.random() * netzfactorDepartmens.length);
+    return netzfactorDepartmens[random];
 }
 
 function randomLetter() {
@@ -131,7 +132,7 @@ function addEvent() {
     let name = randomLetter() + randomLetter()
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
-    let department = randomColor();
+    let department = randomDepartment();
     
     if (startDate === "" || endDate === "") {
         alert("Bitte Datum eingeben");
