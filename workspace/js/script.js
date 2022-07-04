@@ -163,7 +163,7 @@ function loadEvents(startDate) {
     let output = [];
 
     const currentDate = startDate.toJSON().slice(0, 10);
-
+    
     
     Object.entries(jsonEventList).forEach(([key, value ]) => {
         name = value.name;
@@ -181,6 +181,11 @@ function loadEvents(startDate) {
         const firstLetterOfLastName = lastName.charAt(0);
         const restOfLastName = lastName.substring(1);
         const initials = firstLetterOfName + firstLetterOfLastName;
+        let textColor = "black";
+        
+        if(department === "media" || department === "network") {
+            textColor = "gray-100";
+        }
 
         console.log(firstLetterOfName, restOfName, firstLetterOfLastName, restOfLastName);
         if(currentDate >= start && currentDate <= end) {
