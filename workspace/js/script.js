@@ -186,7 +186,7 @@ function loadEvents(startDate) {
             //console.log("start "+ start + " " + "ende " + end);
             output.push(
                 `
-                <div class="mx-1 flex my-2 text-netzfactor justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
+                <div class="mx-1 flex my-2 text-black justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
                     <div class="flex">${firstLetterOfName}${firstLetterOfLastName}</div>
                     <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
                 </div>
