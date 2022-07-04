@@ -28,6 +28,8 @@ let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
 let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
 
+let initials;
+
 buttonContainer.forEach((entry) =>{
     entry.querySelector('.viewButton').addEventListener('click', () => {
         let menu = entry.querySelector(".viewMenu");
@@ -143,6 +145,7 @@ function addEvent() {
     toggleModal();
 }
 
+
 function loadEvents(startDate) {
     let name,
         start,
@@ -170,12 +173,11 @@ function loadEvents(startDate) {
             textColor = "gray-100";
         }
 
-        console.log(firstLetterOfName, restOfName, firstLetterOfLastName, restOfLastName);
         if(currentDate >= start && currentDate <= end) {
-            //console.log("start "+ start + " " + "ende " + end);
             output.push(
                 `
-                <div data-${initials} class="mx-1 flex my-2 text-${textColor} justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
+                <div data-initials="${initials + firstName + lastName}" class="mx-1 flex my-2 justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-full w-2/3 shadow-md
+                hover-event relative hover:scale-125 border border-solid border-transparent">
                     <div class="flex">${initials}</div>
                     <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
                 </div>
@@ -304,6 +306,29 @@ function placeDays(monthIndex, year) {
         startDate.setDate(startDate.getDate() + 1);
     }
     document.querySelector("#days").innerHTML += output.join("");
+
+    const dataClass = document.querySelectorAll(`[data-initials]`);
+        dataClass.forEach((current) => {
+            current.addEventListener("pointerover", function () {
+                document.querySelectorAll(`[data-initials="${current.dataset.initials}"]`).forEach((entry) => {
+                    if(current !== entry) {
+
+                        entry.classList.remove("border-transparent");
+                        entry.classList.add("border-black");
+                    }
+            });
+        });
+            current.addEventListener("pointerout", function () {
+                document.querySelectorAll(`[data-initials="${current.dataset.initials}"]`).forEach((entry) => {
+                    if(current !== entry) {
+                        entry.classList.add("border-transparent");
+                        entry.classList.remove("border-black");
+                    }
+            });
+        });
+        
+        
+    });
 }
 
 function getDaysInMonth(year, month) {
