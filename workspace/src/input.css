@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind utilities;
 @tailwind components;
+
+.hover-event {
+    @apply z-0;
+}
+
+.hover-event:hover {
+    @apply z-10;
+}
+
+.hover-event:hover div:last-child {
+    @apply block absolute left-1/2 whitespace-nowrap -translate-x-1/2
+    pointer-events-none rounded-full border border-black border-solid;
+}

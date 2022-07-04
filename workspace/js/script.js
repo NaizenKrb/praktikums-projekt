@@ -9,7 +9,11 @@ const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
 
 const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
-const netzfactorColors = ["web","media","app","network","research"];
+const names = ["Niclas Heide", "Max Mustermann", "Peter Lustig","Test Test", "Zweiter Testname",
+ "Test Name", "Test Zwei", "Test Drei", "Test Vier","Test fuenf", "Test sechs", "Test sieben",
+ "Test acht", "Test neun", "Test zehn", "Test elf", "Test zwoelf", "Test dreizehn", "Test vierzehn",
+ "Test fuenfzehn", "Test sechzehn", "Test siebzehn", "Test achtzehn", "Test neunzehn", "Test zwanzig", ]
+
 const netzfactorDepartmens = ["web","media","app","network","research"];
 
 
@@ -129,11 +133,12 @@ const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
 function addEvent() {
-    let name = randomLetter() + randomLetter()
+    let name = names[Math.floor(Math.random() * names.length)];
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
     let department = randomDepartment();
-    
+
+
     if (startDate === "" || endDate === "") {
         alert("Bitte Datum eingeben");
         return;
@@ -165,23 +170,31 @@ function loadEvents(currentYear, startOfMonth, endOfMonth) {
         end = value.end;
         department = value.department;
 
-        if(start >= startOfMonth && end <= endOfMonth) {
-            console.log("start "+ start + " " + "ende " + end);
+        var index = name.indexOf(" ");
+        let firstName = name.substring(0, index);
+        let lastName = name.substring(index + 1);
+
+        const firstLetterOfName = firstName.charAt(0);
+        const restOfName = firstName.substring(1);
+
+        const firstLetterOfLastName = lastName.charAt(0);
+        const restOfLastName = lastName.substring(1);
+
+        console.log(firstLetterOfName, restOfName, firstLetterOfLastName, restOfLastName);
+        if(currentDate >= start && currentDate <= end) {
+            //console.log("start "+ start + " " + "ende " + end);
             output.push(
                 `
-                <div class="my-2 px-3 text-netzfactor font-bold bg-${department}">
-                    ${name}
+                <div class="mx-1 flex my-2 text-netzfactor justify-center justify-self-center hover-event relative font-bold bg-${department} hover:scale-125 rounded-full w-2/3 shadow-md">
+                    <div class="flex">${firstLetterOfName}${firstLetterOfLastName}</div>
+                    <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
                 </div>
                 `
                 )
             }
     });
 
-    
-    vacationBox.forEach((entry) =>{
-        entry.innerHTML = "";
-        entry.innerHTML += output.join("");
-    });
+    return output.length > 0 ? output : null;
 }
 
 
