@@ -7,8 +7,6 @@ const months = ["January","February","March","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
-const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
 const names = ["Niclas Heide", "Max Mustermann", "Peter Lustig","Test Test", "Zweiter Testname",
  "Test Name", "Test Zwei", "Test Drei", "Test Vier","Test fuenf", "Test sechs", "Test sieben",
  "Test acht", "Test neun", "Test zehn", "Test elf", "Test zwoelf", "Test dreizehn", "Test vierzehn",
@@ -119,16 +117,6 @@ function toggleModal () {
 }
 // End of Modal Part ---------------------------------------------------------
 
-function randomDepartment() {
-    let random = Math.floor(Math.random() * netzfactorDepartmens.length);
-    return netzfactorDepartmens[random];
-}
-
-function randomLetter() {
-    let random = Math.floor(Math.random() * alphabet.length);
-    return alphabet[random];
-};
-
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
@@ -136,7 +124,7 @@ function addEvent() {
     let name = names[Math.floor(Math.random() * names.length)];
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
-    let department = randomDepartment();
+    let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
 
 
     if (startDate === "" || endDate === "") {
@@ -175,12 +163,7 @@ function loadEvents(startDate) {
         let firstName = name.substring(0, index);
         let lastName = name.substring(index + 1);
 
-        const firstLetterOfName = firstName.charAt(0);
-        const restOfName = firstName.substring(1);
-
-        const firstLetterOfLastName = lastName.charAt(0);
-        const restOfLastName = lastName.substring(1);
-        const initials = firstLetterOfName + firstLetterOfLastName;
+        initials = firstName.charAt(0) + lastName.charAt(0);
         let textColor = "black";
         
         if(department === "media" || department === "network") {
