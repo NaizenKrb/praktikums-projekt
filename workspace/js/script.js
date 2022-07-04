@@ -14,7 +14,6 @@ const names = ["Niclas Heide", "Max Mustermann", "Peter Lustig","Test Test", "Zw
 
 const netzfactorDepartmens = ["web","media","app","network","research"];
 
-
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentDay = date.getDate();
