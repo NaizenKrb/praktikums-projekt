@@ -14,3 +14,5 @@
     @apply block absolute left-1/2 whitespace-nowrap -translate-x-1/2
     pointer-events-none rounded-xl border-2 border-netzfactor border-solid;
 }
+
+

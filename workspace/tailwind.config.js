@@ -15,9 +15,9 @@ module.exports = {
         "media": "#ce4c34",
         "network": "#08865f",
         "app": "#e8bb40",
-        "research": "#884de1",
       },
   },
+  safelist: ["bg-app", "bg-network", "bg-media", "bg-web","bg-netzfactor", "bg-netzfactor-light", "bg-netzfactor-dark"],
   plugins: [],
   }
 }

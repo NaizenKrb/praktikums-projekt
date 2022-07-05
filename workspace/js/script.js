@@ -1,5 +1,17 @@
 // Language: javascript
 "use strict";
+
+function getClassName(department) {
+    return {
+        "netzfactor": "bg-netzfactor-light",
+        "netzfactor": "bg-netzfactor-dark",
+        "web": "bg-web",
+        "media": "bg-media",
+        "network": "bg-network",
+        "app": "bg-app"
+    }[department];
+} 
+
 const months = ["January","February","March","April",
                 "May","June","July","August","September",
                 "October","November","December"];
