@@ -1,6 +1,6 @@
 // Language: javascript
 "use strict";
-
+// Ignore the following lines, they are just for adding the custom colors
 function getClassName(department) {
     return {
         "netzfactor": "bg-netzfactor-light",
@@ -11,23 +11,27 @@ function getClassName(department) {
         "app": "bg-app"
     }[department];
 } 
-
+//
+//List of Months that exist in the year
 const months = ["January","February","March","April",
                 "May","June","July","August","September",
                 "October","November","December"];
-
-const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
-                "Donnerstag","Freitag","Samstag"];
-
+// All the days of the Week
+const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
+                "Thursday","Friday","Saturday"];
+// Names of the Employees for testing
 const names = ["Niclas Heide","2Niclas Heide"]
-
-const netzfactorDepartmens = ["web","media","app","network","research"];
-
+// Departmens of netzfactor for testing
+const netzfactorDepartmens = ["web","media","app","network"];
+// Create a new Date object
 let date = new Date();
+// Get the Current year
 let currentYear = date.getFullYear();
+// Get the Current day
 let currentDay = date.getDate();
-
+//get the current month
 let monthIndex = date.getMonth();
+//get the string for the current month
 let currentMonth = months[monthIndex];
 
 let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
