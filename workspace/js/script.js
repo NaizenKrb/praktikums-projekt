@@ -7,10 +7,7 @@ const months = ["January","February","March","April",
 const weekDays = ["Sonntag", "Montag","Dienstag","Mittwoch",
                 "Donnerstag","Freitag","Samstag"];
 
-const names = ["Niclas Heide", "Max Mustermann", "Peter Lustig","Test Test", "Zweiter Testname",
- "Test Name", "Test Zwei", "Test Drei", "Test Vier","Test fuenf", "Test sechs", "Test sieben",
- "Test acht", "Test neun", "Test zehn", "Test elf", "Test zwoelf", "Test dreizehn", "Test vierzehn",
- "Test fuenfzehn", "Test sechzehn", "Test siebzehn", "Test achtzehn", "Test neunzehn", "Test zwanzig", ]
+const names = ["Niclas Heide","2Niclas Heide"]
 
 const netzfactorDepartmens = ["web","media","app","network","research"];
 
