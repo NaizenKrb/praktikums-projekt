@@ -96,15 +96,15 @@ openmodal.forEach((entry) =>{
         toggleModal();
     });
 });
-
+// Select the modal-overlay and add the eventlistener to it
 const overlay = document.querySelector('.modal-overlay');
 overlay.addEventListener('click', toggleModal);
-
+// Select the modal-close buttons and add a eventlistener to them
 const closemodal = document.querySelectorAll('.modal-close')
 for (let i = 0; i < closemodal.length; i++) {
     closemodal[i].addEventListener('click', toggleModal);
 }
-
+// Toggle the modal when the user clicks on the button or anywhere outside of it
 document.onkeydown = function(evt) {
     evt = evt || window.event
     let isEscape = false
@@ -120,7 +120,7 @@ document.onkeydown = function(evt) {
         toggleModal();
     }
 };
-
+// Function for the toggling of the modal
 function toggleModal () {
     const body = document.querySelector('body');
     const modal = document.querySelector('.modal');
