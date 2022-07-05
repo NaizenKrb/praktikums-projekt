@@ -118,12 +118,15 @@ function toggleModal () {
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
+
+
 function addEvent() {
     let name = names[Math.floor(Math.random() * names.length)];
     let startDate = document.querySelector(".startDate").value;
     let endDate = document.querySelector(".endDate").value;
     let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
 
+    let vacation = [];
 
     if (startDate === "" || endDate === "") {
         alert("Bitte Datum eingeben");
@@ -134,7 +137,36 @@ function addEvent() {
         return;
     }
 
-    jsonEventList[`${name}`] = {name: name, start: startDate, end: endDate, department: department}; // [Fullname later ?]
+    let status = true;
+
+    Object.entries(jsonEventList).forEach(([key, value ]) => {
+        if (name === value.name) {
+            vacation = value.vacations;
+            vacation.forEach((entry) => {
+                if (startDate >= entry.start && startDate <= entry.end) {
+                    status = false;
+                    alert("Dieser Mitarbeiter hat bereits einen Urlaub zwischen " + entry.start + " und " + entry.end);
+                    department = value.department;
+                    return;
+                }
+            })
+            if(status){
+                department = value.department;
+                console.log(vacation);
+                vacation.push({start: startDate, end: endDate});
+            }
+        } else if (name !== value.name) {
+            vacation = [{start: startDate, end: endDate}];
+        } else {
+            alert("Mitarbeiter nicht gefunden");
+        }
+    }); 
+
+    if (!status) {
+        return;
+    }
+
+    jsonEventList[`${name}`] = {name: name, vacations: vacation, department: department}; 
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     placeDays(monthIndex, currentYear);
@@ -146,7 +178,8 @@ function loadEvents(startDate) {
     let name,
         start,
         end,
-        department;
+        department,
+        vacations;
     let output = [];
 
     const currentDate = startDate.toJSON().slice(0, 10);
@@ -154,8 +187,10 @@ function loadEvents(startDate) {
     
     Object.entries(jsonEventList).forEach(([key, value ]) => {
         name = value.name;
-        start = value.start;
-        end = value.end;
+        vacations = value.vacations;
+        
+        // start = value.start;
+        // end = value.end;
         department = value.department;
 
         var index = name.indexOf(" ");
@@ -169,19 +204,22 @@ function loadEvents(startDate) {
             textColor = "gray-100";
         }
 
-        if(currentDate >= start && currentDate <= end) {
-            output.push(
-                `
-                <div data-initials="${initials + firstName + lastName}" class="mx-1 flex my-2 justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl w-2/3 shadow-md
-                hover-event relative hover:scale-125 border-2 border-solid border-transparent">
-                    <div class="flex">${initials}</div>
-                    <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
-                </div>
-                `
+        vacations.forEach(vacation => {
+            start = vacation.start;
+            end = vacation.end;
+            if(currentDate >= start && currentDate <= end) {
+                output.push(
+                    `
+                    <div data-initials="${initials + firstName + lastName}" class="mx-1 flex my-2 justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl w-8 scale-75 shadow-md
+                    hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
+                        <div class="flex">${initials}</div>
+                        <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
+                    </div>
+                    `
                 )
-            }
+            };
+        });
     });
-
     return output.length > 0 ? output : null;
 }
 
