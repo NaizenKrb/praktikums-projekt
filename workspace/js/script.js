@@ -133,10 +133,15 @@ addButton.addEventListener("click", addEvent);
 
 
 function addEvent() {
+    let form = document.getElementById("vacationForm");
+    let formData = new FormData(form)
+
     let name = names[Math.floor(Math.random() * names.length)];
-    let startDate = document.querySelector(".startDate").value;
-    let endDate = document.querySelector(".endDate").value;
+    let startDate = formData.get("startDate");
+    let endDate = formData.get("endDate");
     let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
+
+    let holidayType = formData.get("holidaytype");
 
     let vacation = [];
 
@@ -158,27 +163,28 @@ function addEvent() {
                 if (startDate >= entry.start && startDate <= entry.end) {
                     status = false;
                     alert("Dieser Mitarbeiter hat bereits einen Urlaub zwischen " + entry.start + " und " + entry.end);
-                    department = value.department;
                     return;
                 }
             })
             if(status){
-                department = value.department;
                 console.log(vacation);
-                vacation.push({start: startDate, end: endDate});
             }
-        } else if (name !== value.name) {
-            vacation = [{start: startDate, end: endDate}];
-        } else {
-            alert("Mitarbeiter nicht gefunden");
-        }
+        } 
     }); 
 
     if (!status) {
         return;
     }
+    if(!(name in jsonEventList)) {
+        jsonEventList[name] = {
+            name: name,
+            department: department,
+        };
+    }
 
-    jsonEventList[`${name}`] = {name: name, vacations: vacation, department: department}; 
+    vacation.push({start: startDate, end: endDate, type: holidayType});
+    jsonEventList[`${name}`].vacations = vacation;
+    console.log(jsonEventList[`${name}`]); 
     localStorage.setItem("events", JSON.stringify(jsonEventList));
 
     placeDays(monthIndex, currentYear);

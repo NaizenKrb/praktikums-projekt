@@ -102,28 +102,38 @@
           </div>
 
           <!--Body-->
-          <form class="py-3">
+          <form id="vacationForm" class="py-3">
             <label class="my-3 p-2 border border-gray-300 rounded-md shadow-sm flex flex-col justify-center text-lg font-medium">
               <span>Start:</span>
-              <input type="date" class="startDate border-2 rounded-md p-1">
+              <input type="date" name="startDate" class="startDate border-2 rounded-md p-1">
             </label>
             <label class="my-3 p-2 border border-gray-300 rounded-md shadow-sm flex flex-col justify-center text-lg font-medium">
               <span>End:</span>
-              <input type="date" class="endDate shadow-sm border-2 rounded-md p-1">
+              <input type="date" name="endDate" class="endDate shadow-sm border-2 rounded-md p-1">
             </label>
             <label class="my-3 p-2 border border-gray-300 rounded-md shadow-sm justify-around flex text-lg font-medium">
               <div class="flex items-center">
-                <span class="mx-2">Fullday:</span>
-                <input type="checkbox" class="h-5 w-5 rounded-full shadow">
+                <input value="fullDay" name="holidaytype" id="default-radio-1" type="radio" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 focus:ring-2">
+                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Halfday</label> 
+              </div>
+              
+              <div class="flex items-center mb-4">
+                <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Default radio</label>
               </div>
               <div class="flex items-center">
-                <span class="mx-2">Halfday:</span>
-                <input type="checkbox" class="h-5 w-5 rounded-full shadow">
+                <input checked="" id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Checked state</label>
+              </div>
+
+              <div class="flex items-center">
+                <input value="halfDay" name="holidaytype" id="default-radio-2" type="radio" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Halfday</label> 
               </div>
               </label>
             <label class="my-3 p-2 border border-gray-300 rounded-md shadow-sm flex flex-col justify-center text-lg font-medium ">
               <span>Comment:</span>
-              <input type="text" class="comment shadow-sm border-2 rounded-md p-1" placeholder="comment your vacation">
+              <textarea name="comment" class="shadow-sm border-2 rounded-md p-1 h-24 resize-none scrollbar" placeholder="comment your vacation"></textarea>
             </label>
           </form>
           <!--Footer-->
