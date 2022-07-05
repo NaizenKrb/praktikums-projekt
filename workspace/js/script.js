@@ -284,7 +284,7 @@ function placeDays(monthIndex, year) {
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="grid grid-cols-3 py-1 break-words mx-1">
+                    <div class="grid grid-cols-4 py-1 break-words mx-1">
                         ${events? events.join(""): "&nbspNo Events"}
                     </div>
                 </div>
