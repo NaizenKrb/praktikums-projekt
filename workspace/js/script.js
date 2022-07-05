@@ -210,7 +210,7 @@ function loadEvents(startDate) {
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
-                    <div data-initials="${initials + firstName + lastName}" class="mx-1 flex my-2 justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl w-8 scale-75 shadow-md
+                    <div data-initials="${initials + firstName + lastName}" class="mx-0.5 flex my-2 min-w-[32px] justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
                         <div class="flex">${initials}</div>
                         <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
@@ -322,7 +322,7 @@ function placeDays(monthIndex, year) {
                     <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
                         ${dayFormat}
                     </div>
-                    <div class="grid grid-cols-4 py-1 break-words mx-1">
+                    <div class="flex flex-wrap justify-evenly py-1 break-words mx-1 gap-4">
                         ${events? events.join(""): "&nbspNo Events"}
                     </div>
                 </div>
