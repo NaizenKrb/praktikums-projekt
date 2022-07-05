@@ -201,18 +201,15 @@ function loadEvents(startDate) {
         start,
         end,
         department,
-        vacations;
-    let output = [];
+        vacations,
+        holidayType,
+        output = [];
 
     const currentDate = startDate.toJSON().slice(0, 10);
-    
     
     Object.entries(jsonEventList).forEach(([key, value ]) => {
         name = value.name;
         vacations = value.vacations;
-        
-        // start = value.start;
-        // end = value.end;
         department = value.department;
 
         var index = name.indexOf(" ");
@@ -229,6 +226,8 @@ function loadEvents(startDate) {
         vacations.forEach(vacation => {
             start = vacation.start;
             end = vacation.end;
+            holidayType = vacation.type;
+            console.log(holidayType);
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
