@@ -211,28 +211,30 @@ function loadEvents(startDate) {
         output = [];
 
     const currentDate = startDate.toJSON().slice(0, 10);
-    
+    // Loop trough all "keys" in the jsonEventList
     Object.entries(jsonEventList).forEach(([key, value ]) => {
+        // Safe the name, department, vacations to the variables
         name = value.name;
         vacations = value.vacations;
         department = value.department;
-
+        // Create initials for the name
         var index = name.indexOf(" ");
         let firstName = name.substring(0, index);
         let lastName = name.substring(index + 1);
-
         initials = firstName.charAt(0) + lastName.charAt(0);
+        // Make the textColor black
         let textColor = "black";
-        
+        // Make the textColor white if the department is media or network
         if(department === "media" || department === "network") {
             textColor = "gray-100";
         }
-
+        // Loop trough all vacations
         vacations.forEach(vacation => {
+            //Safe the start date, end date and type to the variables
             start = vacation.start;
             end = vacation.end;
             holidayType = vacation.type;
-            console.log(holidayType);
+            // If the currentdate is between the start and end date do the following
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
@@ -246,6 +248,7 @@ function loadEvents(startDate) {
             };
         });
     });
+    // Return the output
     return output.length > 0 ? output : null;
 }
 
