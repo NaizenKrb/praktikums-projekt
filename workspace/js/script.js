@@ -11,7 +11,6 @@ function getClassName(department) {
         "app": "bg-app"
     }[department];
 } 
-//
 //List of Months that exist in the year
 const months = ["January","February","March","April",
                 "May","June","July","August","September",
@@ -55,7 +54,6 @@ buttonContainer.forEach((entry) =>{
         }
     });         
 });
-
 //Select the today button and add the eventlistener to it
 const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
@@ -73,10 +71,10 @@ thisMonthButton.forEach((entry) =>{
         }
     });
 });
-
+// Place the current month + year in the DOM in the topleft
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
+// Place the days in the DOM
 placeDays(monthIndex, currentYear);
-
 //Select the next button and add the eventlistener to it
 const nextButtonClicked = document.getElementById("next")
 if (nextButtonClicked != null) {
@@ -84,7 +82,6 @@ if (nextButtonClicked != null) {
         setNextMonth();
     });
 }
-
 //Select the last button and add the eventlistener to it
 const lastButtonClicked = document.getElementById("last")
 if (lastButtonClicked != null) {
@@ -92,7 +89,6 @@ if (lastButtonClicked != null) {
         setPreviousMonth();
     });
 }
-
 // Modal Part ---------------------------------------------------------------
 let openmodal = document.querySelectorAll(".addEvent");
 openmodal.forEach((entry) =>{
@@ -136,11 +132,10 @@ function toggleModal () {
 }
 // End of Modal Part ---------------------------------------------------------
 
+// Select the add button and add the eventlistener to it
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
-
-
-
+// Function for adding Events with the Modal
 function addEvent() {
     let form = document.getElementById("vacationForm");
     let formData = new FormData(form)
@@ -162,10 +157,11 @@ function addEvent() {
         alert("Startdatum muss vor dem Enddatum liegen");
         return;
     }
-
+    // Set the Status to true
     let status = true;
-
+    // Loop trough all "keys" in the jsonEventList
     Object.entries(jsonEventList).forEach(([key, value ]) => {
+        // If the key is the same as the Name of the Employee do the following
         if (name === value.name) {
             vacation = value.vacations;
             vacation.forEach((entry) => {
@@ -175,32 +171,35 @@ function addEvent() {
                     return;
                 }
             })
+            // If the key is not the same as the Name of the Employee do the following
             if(status){
                 console.log(vacation);
             }
         } 
     }); 
-
+    // If the status is false do the following
     if (!status) {
         return;
     }
+    // If the name is not in the jsonEventList do the following
     if(!(name in jsonEventList)) {
         jsonEventList[name] = {
             name: name,
             department: department,
         };
     }
-
+    // Push the start date,end date and type to the vacation array
     vacation.push({start: startDate, end: endDate, type: holidayType});
+    // Set the vacation array to the jsonEventList
     jsonEventList[`${name}`].vacations = vacation;
-    console.log(jsonEventList[`${name}`]); 
+    // Save the jsonEventList to localStorage
     localStorage.setItem("events", JSON.stringify(jsonEventList));
-
+    // Reload the page
     placeDays(monthIndex, currentYear);
+    // Close the modal
     toggleModal();
 }
-
-
+// Function for loading the events from the localstorage
 function loadEvents(startDate) {
     let name,
         start,
