@@ -36,7 +36,6 @@ let currentMonth = months[monthIndex];
 let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
 // Get the weekDay which is today
 let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
-
 // Select everything in the DOM within the buttoncontainer
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
 // Create jsonEventList if it doesn't exist or read it from localStorage
@@ -137,22 +136,24 @@ const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 // Function for adding Events with the Modal
 function addEvent() {
+    // Get the element vacationForm and create a new FormData object
     let form = document.getElementById("vacationForm");
     let formData = new FormData(form)
-
+    // Choose random name from the names array and random department from the netzfactorDepartmens array
     let name = names[Math.floor(Math.random() * names.length)];
+    let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
+    // Get the values from the form
     let startDate = formData.get("startDate");
     let endDate = formData.get("endDate");
-    let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
-
     let holidayType = formData.get("holidaytype");
-
+    // Create a new vacation array
     let vacation = [];
-
+    // If the startDate or endDate is not a valid date, alert the user
     if (startDate === "" || endDate === "") {
         alert("Bitte Datum eingeben");
         return;
     }
+    // If the startDate is after the endDate, alert the user
     else if (startDate > endDate) {
         alert("Startdatum muss vor dem Enddatum liegen");
         return;
