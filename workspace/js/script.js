@@ -33,19 +33,21 @@ let currentDay = date.getDate();
 let monthIndex = date.getMonth();
 //get the string for the current month
 let currentMonth = months[monthIndex];
-
+// Get the number of days of the month
 let daysInCurrentMonth = getDaysInMonth(currentYear, monthIndex);
+// Get the weekDay which is today
 let weekDay = getWeekDay(currentYear, monthIndex, currentDay);
 
+// Select everything in the DOM within the buttoncontainer
 let buttonContainer = document.querySelectorAll(".buttoncontainer");
+// Create jsonEventList if it doesn't exist or read it from localStorage
 let jsonEventList = "events" in localStorage? JSON.parse(localStorage.getItem('events')) : {};
-
+// create initials variable for the initials of the employees
 let initials;
-
+// Loop through the buttoncontainer and add the eventlistener to each button
 buttonContainer.forEach((entry) =>{
     entry.querySelector('.viewButton').addEventListener('click', () => {
         let menu = entry.querySelector(".viewMenu");
-        
         if (menu.classList.contains("hidden")) {
             menu.classList.remove("hidden");
         } else {
@@ -54,6 +56,7 @@ buttonContainer.forEach((entry) =>{
     });         
 });
 
+//Select the today button and add the eventlistener to it
 const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
     entry.addEventListener("click", () => {
@@ -74,6 +77,7 @@ thisMonthButton.forEach((entry) =>{
 document.getElementById("month").innerHTML = currentMonth + " " + currentYear;
 placeDays(monthIndex, currentYear);
 
+//Select the next button and add the eventlistener to it
 const nextButtonClicked = document.getElementById("next")
 if (nextButtonClicked != null) {
     nextButtonClicked.addEventListener("click", function() {
@@ -81,6 +85,7 @@ if (nextButtonClicked != null) {
     });
 }
 
+//Select the last button and add the eventlistener to it
 const lastButtonClicked = document.getElementById("last")
 if (lastButtonClicked != null) {
     lastButtonClicked.addEventListener("click", function() {
