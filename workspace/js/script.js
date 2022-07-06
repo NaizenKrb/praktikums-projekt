@@ -217,6 +217,7 @@ function loadEvents(startDate) {
         name = value.name;
         vacations = value.vacations;
         department = value.department;
+
         // Create initials for the name
         var index = name.indexOf(" ");
         let firstName = name.substring(0, index);
@@ -241,7 +242,13 @@ function loadEvents(startDate) {
                     <div data-initials="${initials + firstName + lastName}" class="mx-0.5 flex my-2 min-w-[32px] justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
                         <div class="flex">${initials}</div>
-                        <div class="hidden px-3 bg-${department}">${firstName} ${lastName}</div>
+                        <div class="hidden px-3 bg-${department} text-center">
+                            <ul class="list-none">
+                                <li>Name: ${firstName}${lastName}</li>
+                                <li>Holiday type: ${holidayType}</li>
+                                <li>Status: </li>
+                            </ul>
+                        </div>
                     </div>
                     `
                 )
