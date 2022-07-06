@@ -243,8 +243,9 @@ function loadEvents(startDate) {
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
-                    <div data-initials="${initials + firstName + lastName}" class="mx-0.5 flex my-2 min-w-[32px] justify-center justify-self-center text-${textColor} font-bold bg-${department} px-4 py-1 rounded-md  scale-75 shadow-md
-                    hover-event relative hover:scale-100 md:hover:scale-125 border border-solid border-transparent md:scale-100">
+                    <div data-initials="${initials + firstName + lastName}" class="before:content-[''] before:rounded-full before:block before:w-2 before:h-7 before:bg-${department} before:mr-2
+                    mx-0.5 flex my-2 min-w-[55px] min-h-[36px] justify-center justify-self-center text-netzfactor font-bold bg-slate-200 px-1 py-0.5 rounded-md  scale-75 shadow-md
+                    hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
                         <div class="flex">${initials}</div>
                         <div class="hidden px-3 bg-${department} text-center">
                             <ul class="list-none">

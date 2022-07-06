@@ -12,7 +12,28 @@
 
 .hover-event:hover div:last-child {
     @apply block absolute left-1/2 whitespace-nowrap -translate-x-1/2
-    pointer-events-none rounded-md border border-netzfactor border-solid;
+    pointer-events-none rounded-md;
 }
 
+.before\:bg-app::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: rgb(232 187 64 / var(--tw-bg-opacity));
+  }
 
+.before\:bg-network::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 134 95 / var(--tw-bg-opacity));
+}
+.before\:bg-media::before {
+    content: var(--tw-content);
+    --tw-bg-opacity: 1;
+    background-color: rgb(206 76 52 / var(--tw-bg-opacity));
+  }
+
+.before\:bg-web::before {
+content: var(--tw-content);
+--tw-bg-opacity: 1;
+background-color: rgb(0 176 230 / var(--tw-bg-opacity));
+}
