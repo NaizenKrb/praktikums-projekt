@@ -12,7 +12,7 @@
 
 .hover-event:hover div:last-child {
     @apply block absolute left-1/2 whitespace-nowrap -translate-x-1/2
-    pointer-events-none rounded-xl border-2 border-netzfactor border-solid;
+    pointer-events-none rounded-md border border-netzfactor border-solid;
 }
 
 

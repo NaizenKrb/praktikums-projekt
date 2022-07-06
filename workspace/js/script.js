@@ -146,6 +146,8 @@ function addEvent() {
     let startDate = formData.get("startDate");
     let endDate = formData.get("endDate");
     let holidayType = formData.get("holidaytype");
+    let holidayStatus = "registered";
+
     // Create a new vacation array
     let vacation = [];
     // If the startDate or endDate is not a valid date, alert the user
@@ -190,7 +192,7 @@ function addEvent() {
         };
     }
     // Push the start date,end date and type to the vacation array
-    vacation.push({start: startDate, end: endDate, type: holidayType});
+    vacation.push({start: startDate, end: endDate, type: holidayType, status: holidayStatus});
     // Set the vacation array to the jsonEventList
     jsonEventList[`${name}`].vacations = vacation;
     // Save the jsonEventList to localStorage
@@ -208,6 +210,7 @@ function loadEvents(startDate) {
         department,
         vacations,
         holidayType,
+        status,
         output = [];
 
     const currentDate = startDate.toJSON().slice(0, 10);
@@ -235,18 +238,19 @@ function loadEvents(startDate) {
             start = vacation.start;
             end = vacation.end;
             holidayType = vacation.type;
+            status = vacation.status;
             // If the currentdate is between the start and end date do the following
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
-                    <div data-initials="${initials + firstName + lastName}" class="mx-0.5 flex my-2 min-w-[32px] justify-center justify-self-center text-${textColor} font-bold bg-${department} rounded-xl  scale-75 shadow-md
-                    hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
+                    <div data-initials="${initials + firstName + lastName}" class="mx-0.5 flex my-2 min-w-[32px] justify-center justify-self-center text-${textColor} font-bold bg-${department} px-4 py-1 rounded-md  scale-75 shadow-md
+                    hover-event relative hover:scale-100 md:hover:scale-125 border border-solid border-transparent md:scale-100">
                         <div class="flex">${initials}</div>
                         <div class="hidden px-3 bg-${department} text-center">
                             <ul class="list-none">
                                 <li>Name: ${firstName}${lastName}</li>
                                 <li>Holiday type: ${holidayType}</li>
-                                <li>Status: </li>
+                                <li>Status: ${status} </li>
                             </ul>
                         </div>
                     </div>
