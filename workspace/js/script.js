@@ -251,7 +251,7 @@ function loadEvents(startDate) {
                             <ul class="list-none">
                                 <li>${firstName} ${lastName}</li>
                                 <li>${holidayType}</li>
-                                <li>${status}Test</li>
+                                <li>${status}</li>
                             </ul>
                         </div>
                     </div>
