@@ -246,12 +246,12 @@ function loadEvents(startDate) {
                     <div data-initials="${initials + firstName + lastName}" class="before:content-[''] before:rounded-full before:block before:w-2 before:h-7 before:bg-${department} before:mr-2
                     mx-0.5 flex my-2 min-w-[55px] min-h-[36px] justify-center justify-self-center text-netzfactor font-bold bg-slate-200 px-1 py-0.5 rounded-md  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border-2 border-solid border-transparent md:scale-100">
-                        <div class="flex">${initials}</div>
-                        <div class="hidden px-3 bg-${department} text-center">
+                        <div class="flex text-lg">${initials}</div>
+                        <div class="hidden px-3 bg-slate-100 text-center py-2">
                             <ul class="list-none">
-                                <li>Name: ${firstName}${lastName}</li>
-                                <li>Holiday type: ${holidayType}</li>
-                                <li>Status: ${status} </li>
+                                <li>${firstName} ${lastName}</li>
+                                <li>${holidayType}</li>
+                                <li>${status} </li>
                             </ul>
                         </div>
                     </div>
