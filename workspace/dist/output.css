@@ -781,6 +781,14 @@ video {
   min-height: 36px;
 }
 
+.min-h-\[34px\] {
+  min-height: 34px;
+}
+
+.min-h-\[32px\] {
+  min-height: 32px;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -1171,7 +1179,7 @@ video {
 }
 
 .bg-split-slate {
-  background-image: linear-gradient(to bottom, #e2e8f0 50% , #cbd5e1 50%);;
+  background-image: linear-gradient(to right bottom, #e2e8f0 50% , #cbd5e1 50%);;
 }
 
 .bg-auto {
@@ -1532,6 +1540,16 @@ video {
 .before\:h-7::before {
   content: var(--tw-content);
   height: 1.75rem;
+}
+
+.before\:h-8::before {
+  content: var(--tw-content);
+  height: 2rem;
+}
+
+.before\:h-6::before {
+  content: var(--tw-content);
+  height: 1.5rem;
 }
 
 .before\:w-2::before {
