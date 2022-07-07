@@ -244,6 +244,7 @@ function loadEvents(startDate) {
             if(holidayType === "halfDay") {
                 bgColor = "bg-split-slate";
             }
+            //test
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
