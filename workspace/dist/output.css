@@ -619,6 +619,10 @@ video {
   grid-column: span 1 / span 1;
 }
 
+.m-1 {
+  margin: 0.25rem;
+}
+
 .my-20 {
   margin-top: 5rem;
   margin-bottom: 5rem;
@@ -664,16 +668,6 @@ video {
   margin-bottom: 0.75rem;
 }
 
-.my-24 {
-  margin-top: 6rem;
-  margin-bottom: 6rem;
-}
-
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
 .mx-0\.5 {
   margin-left: 0.125rem;
   margin-right: 0.125rem;
@@ -687,16 +681,6 @@ video {
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-}
-
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.mx-80 {
-  margin-left: 20rem;
-  margin-right: 20rem;
 }
 
 .mb-8 {
@@ -783,6 +767,10 @@ video {
   height: 1rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .min-h-\[12rem\] {
   min-height: 12rem;
 }
@@ -821,6 +809,10 @@ video {
 
 .w-4 {
   width: 1rem;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .min-w-\[55px\] {
@@ -976,6 +968,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .rounded-b-lg {
   border-bottom-right-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -1006,27 +1002,12 @@ video {
   border-bottom-right-radius: 0.375rem;
 }
 
-.rounded-t-xl {
-  border-top-left-radius: 0.75rem;
-  border-top-right-radius: 0.75rem;
-}
-
 .border {
   border-width: 1px;
 }
 
 .border-2 {
   border-width: 2px;
-}
-
-.border-y {
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-}
-
-.border-y-2 {
-  border-top-width: 2px;
-  border-bottom-width: 2px;
 }
 
 .border-r {
@@ -1079,11 +1060,6 @@ video {
 .border-netzfactor {
   --tw-border-opacity: 1;
   border-color: rgb(0 75 124 / var(--tw-border-opacity));
-}
-
-.border-slate-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
 
 .bg-slate-100 {
@@ -1155,6 +1131,11 @@ video {
   background-color: transparent;
 }
 
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+}
+
 .bg-netzfactor-light {
   --tw-bg-opacity: 1;
   background-color: rgb(0 104 173 / var(--tw-bg-opacity));
@@ -1190,13 +1171,13 @@ video {
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
-.bg-slate-50 {
+.bg-yellow-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
+  background-color: rgb(254 249 195 / var(--tw-bg-opacity));
 }
 
 .bg-split-slate {
-  background-image: linear-gradient(to right bottom, #e2e8f0 50% , #cbd5e1 50%);;
+  background-image: linear-gradient(to right bottom, #f8fafc 50% , #e2e8f0 50%);;
 }
 
 .bg-auto {
@@ -1306,6 +1287,18 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
+}
+
+.pt-0\.5 {
+  padding-top: 0.125rem;
+}
+
+.pt-0 {
+  padding-top: 0px;
 }
 
 .text-left {
@@ -1590,19 +1583,14 @@ video {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-netzfactor-light:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 104 173 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-slate-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-netzfactor-light:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 104 173 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-slate-300:hover {
@@ -1654,29 +1642,14 @@ video {
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
-.active\:bg-slate-200:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
-}
-
 .active\:bg-slate-100:active {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
-.group:hover .group-hover\:bg-slate-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
-}
-
 .group:hover .group-hover\:bg-slate-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
-
-.group:active .group-active\:bg-slate-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 .group:active .group-active\:bg-slate-200 {
@@ -1707,11 +1680,6 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\:mx-10 {
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
-
   .md\:ml-4 {
     margin-left: 1rem;
   }
@@ -1773,11 +1741,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mx-28 {
-    margin-left: 7rem;
-    margin-right: 7rem;
-  }
-
   .lg\:flex {
     display: flex;
   }

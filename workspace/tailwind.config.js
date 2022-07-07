@@ -17,7 +17,7 @@ module.exports = {
         "app": "#e8bb40",
       },
       backgroundImage: {
-        "split-slate": "linear-gradient(to right bottom, #e2e8f0 50% , #cbd5e1 50%);"
+        "split-slate": "linear-gradient(to right bottom, #f8fafc 50% , #e2e8f0 50%);"
       }
   },
   safelist: ["bg-app", "bg-network", "bg-media", "bg-web","bg-netzfactor", "bg-netzfactor-light", "bg-netzfactor-dark"],

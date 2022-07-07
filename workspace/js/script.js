@@ -239,7 +239,7 @@ function loadEvents(startDate) {
             end = vacation.end;
             holidayType = vacation.type;
             status = vacation.status;
-            let bgColor = "bg-slate-200";
+            let bgColor = "bg-slate-50";
             // If the currentdate is between the start and end date do the following
             if(holidayType === "halfDay") {
                 bgColor = "bg-split-slate";
@@ -252,7 +252,7 @@ function loadEvents(startDate) {
                     mx-0.5 flex my-2 min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold ${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border border-solid md:scale-100">
                         <div class="flex text-lg">${initials}</div>
-                        <div class="hidden px-3 bg-slate-100 text-center py-2">
+                        <div class="hidden px-3 bg-slate-200 text-center py-2">
                             <ul class="list-none">
                                 <li>${firstName} ${lastName}</li>
                                 <li>${holidayType}</li>
@@ -340,8 +340,10 @@ function placeDays(monthIndex, year) {
             if(startDate.getDay() === 6) {
                 output.push(`
                 <div class="weekend col-span-1 border-r border-slate-600 bg-slate-100">
-                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 text-gray-500 truncate">
-                        ${dayFormat}
+                    <div class="p-1 border-t border-slate-600 bg-slate-300 text-gray-500">
+                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium rounded-full">
+                            ${dayFormat}
+                        </div>
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
                     </div>
@@ -350,8 +352,10 @@ function placeDays(monthIndex, year) {
             } else {
                 output.push(`
                 <div class="weekend col-span-1 bg-slate-100">
-                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 text-gray-500 truncate">
-                        ${dayFormat}
+                    <div class="p-1 border-t border-slate-600 bg-slate-300 text-gray-500">
+                        <div class="w-8 h-8 m-1 pt-0.5 truncate text-lg text-center font-medium bg-yellow-100 rounded-full">   
+                            ${dayFormat}
+                        </div>
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
                     </div>
@@ -363,8 +367,10 @@ function placeDays(monthIndex, year) {
             current?
                 `
                 <div class="col-span-1 border-r border-slate-600 bg-slate-200 group hover:bg-slate-300 active:bg-slate-100">
-                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 truncate group-hover:bg-slate-400 group-active:bg-slate-200 ">
-                        ${dayFormat}
+                    <div class="p-1 border-t border-slate-600 bg-slate-300 group-hover:bg-slate-400 group-active:bg-slate-200">
+                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium">
+                            ${dayFormat}
+                        </div>
                     </div>
                     <div class="flex flex-wrap justify-evenly py-1 break-words mx-1 gap-4">
                         ${events? events.join(""): "&nbspNo Events"}
@@ -373,8 +379,10 @@ function placeDays(monthIndex, year) {
             `:
                 `
                 <div class="col-span-1 border-r border-slate-600 bg-slate-50">
-                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-100 text-gray-400 truncate">
-                        ${dayFormat}
+                    <div class="p-1 border-t border-slate-600 bg-slate-100 text-gray-400">
+                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium ">
+                            ${dayFormat}
+                        </div>
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
                 </div>
