@@ -12,7 +12,7 @@
 </head>
 <body class="scrollbar bg-slate-100">
 
-  <header class="z-20 flex bg-white items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
+  <header class="z-20 flex bg-slate-100 items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
     <h1 class="text-2xl font-semibold text-gray-900">
       <time id="month"></time>
     </h1>
@@ -25,7 +25,7 @@
             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         </button>
-        <button type="button" class="thisMonth hidden border-t border-b border-gray-300 px-3.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:relative md:block">Today</button>
+        <button type="button" class="thisMonth hidden border-t border-b border-gray-300 px-3.5 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-200 focus:relative md:block">Today</button>
         <span class="relative -mx-px h-5 w-px bg-gray-300 md:hidden"></span>
         <button id="next" type="button" class="flex items-center justify-center rounded-r-md border border-l-0 border-gray-300 py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:relative md:w-9 md:px-2 md:hover:bg-gray-200">
           <span class="sr-only">Next month</span>
@@ -137,18 +137,18 @@
     </div>
 
     <!-- Kalender -->
-    <div id="calendar" class="my-24 mx-3 rounded-t-xl shadow-md shadow-gray-400 lg:flex lg:flex-auto lg:flex-col  md:mx-10 lg:mx-28 " >
-      <div id="table-header" class="grid grid-cols-7 border-b-2 border-slate-600 text-center text-l font-bold text-white rounded-t-lg leading-6 lg:flex-none  overflow-hidden">
-        <div class="bg-slate-500 border-r border-slate-600 py-2">M<span class="sr-only sm:not-sr-only">onday</span></div>
-        <div class="bg-slate-500 border-r border-slate-600 py-2">T<span class="sr-only sm:not-sr-only">uesday</span></div>
-        <div class="bg-slate-500 border-r border-slate-600 py-2">W<span class="sr-only sm:not-sr-only">ednesday</span></div>
-        <div class="bg-slate-500 border-r border-slate-600 py-2">T<span class="sr-only sm:not-sr-only">hursday</span></div>
-        <div class="bg-slate-500 border-r border-slate-600 py-2">F<span class="sr-only sm:not-sr-only">riday</span></div>
-        <div class="bg-slate-500 border-r border-slate-600 py-2">S<span class="sr-only sm:not-sr-only">aturday</span></div>
-        <div class="bg-slate-500 py-2">S<span class="sr-only sm:not-sr-only">unday</span></div>
+    <div id="calendar" class="shadow-md shadow-gray-400 lg:flex lg:flex-auto lg:flex-col" >
+      <div id="table-header" class="grid grid-cols-7 border-b border-slate-600 text-center text-l font-bold text-black leading-6 lg:flex-none  overflow-hidden">
+        <div class="bg-slate-50 border-r border-slate-600 py-2">M<span class="sr-only sm:not-sr-only">onday</span></div>
+        <div class="bg-slate-50 border-r border-slate-600 py-2">T<span class="sr-only sm:not-sr-only">uesday</span></div>
+        <div class="bg-slate-50 border-r border-slate-600 py-2">W<span class="sr-only sm:not-sr-only">ednesday</span></div>
+        <div class="bg-slate-50 border-r border-slate-600 py-2">T<span class="sr-only sm:not-sr-only">hursday</span></div>
+        <div class="bg-slate-50 border-r border-slate-600 py-2">F<span class="sr-only sm:not-sr-only">riday</span></div>
+        <div class="bg-slate-50 border-r border-slate-600 py-2">S<span class="sr-only sm:not-sr-only">aturday</span></div>
+        <div class="bg-slate-50 py-2">S<span class="sr-only sm:not-sr-only">unday</span></div>
       </div>
       
-      <div id="days" class="grid grid-cols-7 initial-scale rounded-b-lg" >
+      <div id="days" class="grid grid-cols-7 initial-scale" >
 
       </div>
 

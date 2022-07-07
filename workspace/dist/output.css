@@ -689,6 +689,16 @@ video {
   margin-right: 0.25rem;
 }
 
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.mx-80 {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -1014,6 +1024,11 @@ video {
   border-bottom-width: 1px;
 }
 
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+}
+
 .border-r {
   border-right-width: 1px;
 }
@@ -1064,6 +1079,11 @@ video {
 .border-netzfactor {
   --tw-border-opacity: 1;
   border-color: rgb(0 75 124 / var(--tw-border-opacity));
+}
+
+.border-slate-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
 
 .bg-slate-100 {
@@ -1168,6 +1188,11 @@ video {
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.bg-slate-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 250 252 / var(--tw-bg-opacity));
 }
 
 .bg-split-slate {
@@ -1575,6 +1600,16 @@ video {
   background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-slate-300:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-900:hover {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
@@ -1624,14 +1659,29 @@ video {
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
+.active\:bg-slate-100:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
 .group:hover .group-hover\:bg-slate-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
+.group:hover .group-hover\:bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
 .group:active .group-active\:bg-slate-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.group:active .group-active\:bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {

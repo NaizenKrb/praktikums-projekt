@@ -327,8 +327,6 @@ function placeDays(monthIndex, year) {
         // Intl.DateTimeFormat -> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
         const dayFormat = new Intl.DateTimeFormat('de-AT', {
             day: 'numeric',
-            weekday: 'short',
-            month: 'short'
         }).format(startDate);
 
         let events;
@@ -341,8 +339,8 @@ function placeDays(monthIndex, year) {
         if(isWeekEnd && current) {
             if(startDate.getDay() === 6) {
                 output.push(`
-                <div class="weekend col-span-1 border-r border-slate-600 bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                <div class="weekend col-span-1 border-r border-slate-600 bg-slate-100">
+                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -351,8 +349,8 @@ function placeDays(monthIndex, year) {
                 `);
             } else {
                 output.push(`
-                <div class="weekend col-span-1 bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 text-gray-500 truncate">
+                <div class="weekend col-span-1 bg-slate-100">
+                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 text-gray-500 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 min-h-[12rem] break-words">
@@ -364,8 +362,8 @@ function placeDays(monthIndex, year) {
             output.push(
             current?
                 `
-                <div class="col-span-1 border-r border-slate-600 bg-slate-300 group hover:bg-slate-400 active:bg-slate-200">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-400 truncate group-hover:bg-slate-500 group-active:bg-slate-300 ">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-200 group hover:bg-slate-300 active:bg-slate-100">
+                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-300 truncate group-hover:bg-slate-400 group-active:bg-slate-200 ">
                         ${dayFormat}
                     </div>
                     <div class="flex flex-wrap justify-evenly py-1 break-words mx-1 gap-4">
@@ -374,8 +372,8 @@ function placeDays(monthIndex, year) {
                 </div>
             `:
                 `
-                <div class="col-span-1 border-r border-slate-600 bg-slate-100">
-                    <div class="py-1 px-3 border-y border-slate-600 bg-slate-200 text-gray-400 truncate">
+                <div class="col-span-1 border-r border-slate-600 bg-slate-50">
+                    <div class="py-1 px-3 border-t border-slate-600 bg-slate-100 text-gray-400 truncate">
                         ${dayFormat}
                     </div>
                     <div class="py-1 h-24 min-h-[12rem]"></div>
