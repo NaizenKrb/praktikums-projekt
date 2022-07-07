@@ -777,16 +777,8 @@ video {
   min-height: 12rem;
 }
 
-.min-h-\[36px\] {
-  min-height: 36px;
-}
-
 .min-h-\[34px\] {
   min-height: 34px;
-}
-
-.min-h-\[32px\] {
-  min-height: 32px;
 }
 
 .w-5 {
@@ -1540,16 +1532,6 @@ video {
 .before\:h-7::before {
   content: var(--tw-content);
   height: 1.75rem;
-}
-
-.before\:h-8::before {
-  content: var(--tw-content);
-  height: 2rem;
-}
-
-.before\:h-6::before {
-  content: var(--tw-content);
-  height: 1.5rem;
 }
 
 .before\:w-2::before {

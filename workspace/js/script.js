@@ -239,16 +239,16 @@ function loadEvents(startDate) {
             end = vacation.end;
             holidayType = vacation.type;
             status = vacation.status;
-            let bgColor = "slate-200";
+            let bgColor = "bg-slate-200";
             // If the currentdate is between the start and end date do the following
             if(holidayType === "halfDay") {
-                bgColor = "split-slate";
+                bgColor = "bg-split-slate";
             }
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
                     <div data-initials="${initials + firstName + lastName}" class="before:content-[''] before:rounded-full before:block before:w-2 before:h-7 before:bg-${department} before:mr-2
-                    mx-0.5 flex my-2 min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold bg-${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
+                    mx-0.5 flex my-2 min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold ${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border border-solid md:scale-100">
                         <div class="flex text-lg">${initials}</div>
                         <div class="hidden px-3 bg-slate-100 text-center py-2">
