@@ -19,7 +19,8 @@ const months = ["Januar","Februar","März","April",
 const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
                 "Thursday","Friday","Saturday"];
 // Names of the Employees for testing
-const names = ["Niclas Heide","2Niclas Heide" , "3Niclas Heide", "4Niclas Heide"]
+const names = ["Niclas Heide"];
+const currentName = names[0];
 // Departmens of netzfactor for testing
 const netzfactorDepartmens = ["web","media","app","network"];
 // Create a new Date object
@@ -134,13 +135,70 @@ function toggleModal () {
 // Select the add button and add the eventlistener to it
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
+
+
+function calculateHoliday(){
+    let user = jsonEventList[currentName];
+    let vacations = user.vacations;
+    let holidayCount = vacations.reduce(function(previous, current){
+        if(current.type === "halfDay"){
+            return previous + 0.5;
+        }
+        return previous + workingDaysBetweenDates(current.start, current.end , true);
+    }, 0);
+    let bookedDays = document.getElementById("bookedDays");
+    bookedDays.innerHTML = holidayCount;
+}
+function workingDaysBetweenDates(startDate, endDate, getWorkingDays) {
+
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+
+    // Validate input
+    if (endDate < startDate)
+        return 0;
+
+    // Calculate days between dates
+    var millisecondsPerDay = 86400 * 1000; // Day in milliseconds
+    startDate.setHours(0,0,0,1);  // Start just after midnight
+    endDate.setHours(23,59,59,999);  // End just before midnight
+    var diff = endDate - startDate;  // Milliseconds between datetime objects
+    var days = Math.ceil(diff / millisecondsPerDay);
+
+    if(getWorkingDays){
+        // Subtract two weekend days for every week in between
+        var weeks = Math.floor(days / 7);
+        days = days - (weeks * 2);
+
+        // Handle special cases
+        var startDay = startDate.getDay();
+        var endDay = endDate.getDay();
+
+        // Remove weekend not previously removed.
+        if (startDay - endDay > 1)
+            days = days - 2;
+
+        // Remove start day if span starts on Sunday but ends before Saturday
+        if (startDay == 0 && endDay != 6)
+            days = days - 1;
+
+        // Remove end day if span ends on Saturday but starts after Sunday
+        if (endDay == 6 && startDay != 0)
+            days = days - 1;
+    }
+    return days;
+}
+
+calculateHoliday();
+// workingDaysBetweenDates(start_date, end_date, false);
+
 // Function for adding Events with the Modal
 function addEvent() {
     // Get the element vacationForm and create a new FormData object
     let form = document.getElementById("vacationForm");
     let formData = new FormData(form)
     // Choose random name from the names array and random department from the netzfactorDepartmens array
-    let name = names[Math.floor(Math.random() * names.length)];
+    let name = currentName;
     let department = netzfactorDepartmens[Math.floor(Math.random() * netzfactorDepartmens.length)];
     // Get the values from the form
     let startDate = formData.get("startDate");
@@ -202,6 +260,7 @@ function addEvent() {
     placeDays(monthIndex, currentYear);
     // Close the modal
     toggleModal();
+    calculateHoliday()
 }
 // Function for loading the events from the localstorage
 function loadEvents(startDate) {
