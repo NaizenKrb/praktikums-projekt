@@ -211,6 +211,7 @@ function loadEvents(startDate) {
         department,
         vacations,
         holidayType,
+        dayTime,
         status,
         output = [];
 
@@ -240,10 +241,15 @@ function loadEvents(startDate) {
             end = vacation.end;
             holidayType = vacation.type;
             status = vacation.status;
+            dayTime = vacation.daytime;
             let bgColor = "bg-slate-50";
             // If the currentdate is between the start and end date do the following
             if(holidayType === "halfDay") {
-                bgColor = "bg-split-halfday";
+                if(dayTime === "morning") {
+                    bgColor = "bg-split-halfdayMorning";
+                } else {
+                    bgColor = "bg-split-halfdayAfternoon";
+                }
             }
             //test
             if(currentDate >= start && currentDate <= end) {
