@@ -17,7 +17,8 @@ module.exports = {
         "app": "#e8bb40",
       },
       backgroundImage: {
-        "split-halfday": "linear-gradient(to right bottom, #f8fafc 50% , #d4d4d4 50%);"
+        "split-halfdayAfternoon": "linear-gradient(to right bottom, #f8fafc 50% , #d4d4d4 50%);",
+        "split-halfdayMorning": "linear-gradient(to right bottom, #d4d4d4 50% , #f8fafc 50%);",
       }
   },
   safelist: ["bg-app", "bg-network", "bg-media", "bg-web","bg-netzfactor", "bg-netzfactor-light", "bg-netzfactor-dark"],

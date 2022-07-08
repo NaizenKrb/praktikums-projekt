@@ -146,6 +146,7 @@ function addEvent() {
     let startDate = formData.get("startDate");
     let endDate = formData.get("endDate");
     let holidayType = formData.get("holidaytype");
+    let dayTime = formData.get("daytime");
     let holidayStatus = "registered";
 
     // Create a new vacation array
@@ -192,7 +193,7 @@ function addEvent() {
         };
     }
     // Push the start date,end date and type to the vacation array
-    vacation.push({start: startDate, end: endDate, type: holidayType, status: holidayStatus});
+    vacation.push({start: startDate, end: endDate, type: holidayType, status: holidayStatus, daytime: dayTime});
     // Set the vacation array to the jsonEventList
     jsonEventList[`${name}`].vacations = vacation;
     // Save the jsonEventList to localStorage
@@ -252,7 +253,7 @@ function loadEvents(startDate) {
                     m-1 flex min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold ${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border border-solid md:scale-100">
                         <div class="flex text-lg">${initials}</div>
-                        <div class="hidden px-3 bg-slate-50 text-center py-2">
+                        <div class="hidden px-3 bg-slate-50 text-center py-2 shadow-md">
                             <ul class="list-none">
                                 <li>${firstName} ${lastName}</li>
                                 <li>${status}</li>
@@ -367,7 +368,7 @@ function placeDays(monthIndex, year) {
                 `
                 <div class="col-span-1 border border-slate-300 bg-slate-100 rounded-md group hover:bg-blue-100 hover:shadow-lg active:bg-slate-100">
                     <div class="p-1 bg-slate-100 rounded-t-md text-gray-500 group-hover:bg-blue-100 group-active:bg-slate-100">
-                        <div id="" class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full group-hover:text-blue-600">
+                        <div id="" class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full group-hover:text-blue-600 group-active:text-gray-500">
                             ${dayFormat}
                         </div>
                     </div>
