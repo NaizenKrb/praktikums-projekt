@@ -365,9 +365,9 @@ function placeDays(monthIndex, year) {
             output.push(
             current?
                 `
-                <div class="col-span-1 border border-slate-300 bg-slate-100 rounded-md group hover:bg-slate-200 hover:shadow-lg active:bg-slate-100">
-                    <div class="p-1 bg-slate-100 rounded-t-md group-hover:bg-slate-200 group-active:bg-slate-100 text-gray-500">
-                        <div id="" class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full">
+                <div class="col-span-1 border border-slate-300 bg-slate-100 rounded-md group hover:bg-blue-100 hover:shadow-lg active:bg-slate-100">
+                    <div class="p-1 bg-slate-100 rounded-t-md text-gray-500 group-hover:bg-blue-100 group-active:bg-slate-100">
+                        <div id="" class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full group-hover:text-blue-600">
                             ${dayFormat}
                         </div>
                     </div>
