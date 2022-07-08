@@ -339,9 +339,9 @@ function placeDays(monthIndex, year) {
         if(isWeekEnd && current) {
             if(startDate.getDay() === 6) {
                 output.push(`
-                <div class="weekend col-span-1 border-r border-slate-600 bg-slate-100">
-                    <div class="p-1 border-t border-slate-600 bg-slate-300 text-gray-500">
-                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium rounded-full">
+                <div class="weekend col-span-1 border-r border-slate-300 bg-slate-100">
+                    <div class="p-1 border-t border-slate-300 bg-slate-100 text-gray-400">
+                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full">
                             ${dayFormat}
                         </div>
                     </div>
@@ -352,8 +352,8 @@ function placeDays(monthIndex, year) {
             } else {
                 output.push(`
                 <div class="weekend col-span-1 bg-slate-100">
-                    <div class="p-1 border-t border-slate-600 bg-slate-300 text-gray-500">
-                        <div class="w-8 h-8 m-1 pt-0.5 truncate text-lg text-center font-medium bg-yellow-100 rounded-full">   
+                    <div class="p-1 border-t border-slate-300 bg-slate-100 text-gray-400">
+                        <div class="w-8 h-8 m-1 pt-0.5 truncate text-2xl text-center font-medium rounded-full">   
                             ${dayFormat}
                         </div>
                     </div>
@@ -366,21 +366,21 @@ function placeDays(monthIndex, year) {
             output.push(
             current?
                 `
-                <div class="col-span-1 border-r border-slate-600 bg-slate-200 group hover:bg-slate-300 active:bg-slate-100">
-                    <div class="p-1 border-t border-slate-600 bg-slate-300 group-hover:bg-slate-400 group-active:bg-slate-200">
-                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium">
+                <div class="col-span-1 border-r border-slate-300 bg-slate-200 group hover:bg-slate-300 active:bg-slate-100">
+                    <div class="p-1 border-t border-slate-300 bg-slate-200 group-hover:bg-slate-300 group-active:bg-slate-100 text-gray-500">
+                        <div id="" class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full">
                             ${dayFormat}
                         </div>
                     </div>
-                    <div class="flex flex-wrap justify-evenly py-1 break-words mx-1 gap-4">
+                    <div class="flex flex-wrap justify-evenly py-1 break-words mx-1">
                         ${events? events.join(""): "&nbspNo Events"}
                     </div>
                 </div>
             `:
                 `
-                <div class="col-span-1 border-r border-slate-600 bg-slate-50">
-                    <div class="p-1 border-t border-slate-600 bg-slate-100 text-gray-400">
-                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-lg text-center font-medium ">
+                <div class="col-span-1 border-r border-slate-300 bg-slate-50">
+                    <div class="p-1 border-t border-slate-300 bg-slate-50 text-gray-300">
+                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium ">
                             ${dayFormat}
                         </div>
                     </div>
