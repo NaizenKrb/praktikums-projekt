@@ -168,7 +168,7 @@ function addEvent() {
         if (name === value.name) {
             vacation = value.vacations;
             vacation.forEach((entry) => {
-                if (startDate >= entry.start && startDate <= entry.end) {
+                if (!(entry.start > endDate || entry.end < startDate)) {
                     status = false;
                     alert("Dieser Mitarbeiter hat bereits einen Urlaub zwischen " + entry.start + " und " + entry.end);
                     return;
