@@ -12,14 +12,14 @@ function getClassName(department) {
     }[department];
 } 
 //List of Months that exist in the year
-const months = ["January","February","March","April",
-                "May","June","July","August","September",
-                "October","November","December"];
+const months = ["Januar","Februar","März","April",
+                "Mai","Juni","Juli","August","September",
+                "Oktober","November","Dezember"];
 // All the days of the Week
 const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
                 "Thursday","Friday","Saturday"];
 // Names of the Employees for testing
-const names = ["Niclas Heide","2Niclas Heide"]
+const names = ["Niclas Heide","2Niclas Heide" , "3Niclas Heide", "4Niclas Heide"]
 // Departmens of netzfactor for testing
 const netzfactorDepartmens = ["web","media","app","network"];
 // Create a new Date object
@@ -373,7 +373,7 @@ function placeDays(monthIndex, year) {
                         </div>
                     </div>
                     <div class="flex flex-wrap justify-evenly py-1 break-words mx-1">
-                        ${events? events.join(""): "&nbspNo Events"}
+                        ${events? events.join(""): "&nbspKeine Einträge"}
                     </div>
                 </div>
             `:
