@@ -21,6 +21,8 @@ const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
 // Names of the Employees for testing
 const names = ["Niclas Heide"];
 const currentName = names[0];
+let name = "name" in localStorage? localStorage.getItem("names") : ""; 
+localStorage.setItem("name", currentName);
 // Departmens of netzfactor for testing
 const netzfactorDepartmens = ["web","media","app","network"];
 // Create a new Date object
