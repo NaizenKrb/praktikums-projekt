@@ -242,20 +242,19 @@ function loadEvents(startDate) {
             let bgColor = "bg-slate-50";
             // If the currentdate is between the start and end date do the following
             if(holidayType === "halfDay") {
-                bgColor = "bg-split-slate";
+                bgColor = "bg-split-halfday";
             }
             //test
             if(currentDate >= start && currentDate <= end) {
                 output.push(
                     `
                     <div data-initials="${initials + firstName + lastName}" class="before:content-[''] before:rounded-full before:block before:w-2 before:h-7 before:bg-${department} before:mr-2
-                    mx-0.5 flex my-2 min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold ${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
+                    m-1 flex min-w-[55px] min-h-[34px] justify-center justify-self-center text-netzfactor font-bold ${bgColor} bg-auto px-1 py-0.5 rounded-md  scale-75 shadow-md
                     hover-event relative hover:scale-100 md:hover:scale-125 border border-solid md:scale-100">
                         <div class="flex text-lg">${initials}</div>
-                        <div class="hidden px-3 bg-slate-200 text-center py-2">
+                        <div class="hidden px-3 bg-slate-50 text-center py-2">
                             <ul class="list-none">
                                 <li>${firstName} ${lastName}</li>
-                                <li>${holidayType}</li>
                                 <li>${status}</li>
                             </ul>
                         </div>
