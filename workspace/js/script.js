@@ -138,6 +138,7 @@ function toggleModal () {
 const addButton = document.querySelector(".addButton");
 addButton.addEventListener("click", addEvent);
 
+const maxHolidayCount = 30;
 
 function calculateHoliday(){
     let user = jsonEventList[currentName];
@@ -150,6 +151,8 @@ function calculateHoliday(){
     }, 0);
     let bookedDays = document.getElementById("bookedDays");
     bookedDays.innerHTML = holidayCount;
+    let remainingDays = document.getElementById("remainingDays");
+    remainingDays.innerHTML = maxHolidayCount - holidayCount;
 }
 function workingDaysBetweenDates(startDate, endDate, getWorkingDays) {
 
