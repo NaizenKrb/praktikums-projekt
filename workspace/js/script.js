@@ -57,6 +57,11 @@ buttonContainer.forEach((entry) =>{
         }
     });         
 });
+const profileButton = document.querySelector("#profileButton");
+profileButton.addEventListener('click', () => {
+    let profile = document.querySelector(".profileMenu");
+    profile.classList.toggle('hidden');
+});
 //Select the today button and add the eventlistener to it
 const thisMonthButton = document.querySelectorAll(".thisMonth");
 thisMonthButton.forEach((entry) =>{
