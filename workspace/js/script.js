@@ -21,6 +21,7 @@ const weekDays = ["Sunday", "Monday","Tuesday","Wednesday",
 // Names of the Employees for testing
 const names = ["Niclas Heide"];
 const currentName = names[0];
+document.querySelector("#user").innerHTML = currentName;
 let name = "name" in localStorage? localStorage.getItem("names") : ""; 
 localStorage.setItem("name", currentName);
 // Departmens of netzfactor for testing
