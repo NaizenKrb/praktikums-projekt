@@ -408,32 +408,18 @@ function placeDays(monthIndex, year) {
 
         // HTML Inhalt
         if(isWeekEnd && current) {
-            if(startDate.getDay() === 6) {
-                output.push(`
-                <div class="weekend col-span-1 border border-slate-300 bg-slate-100 rounded-md overflow-hidden">
-                    <div class="p-1 bg-slate-100 text-gray-300">
-                        <div class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full">
-                            ${dayFormat}
-                        </div>
-                    </div>
-                    <div class="py-1 min-h-[9rem] break-words">
+            output.push(`
+            <div class="weekend col-span-1 border border-slate-300 bg-slate-100 rounded-md overflow-hidden">
+                <div class="p-1 bg-slate-100 text-gray-300">
+                    <div class="w-8 h-8 pt-0.5 m-1 truncate text-2xl text-center font-medium rounded-full">
+                        ${dayFormat}
                     </div>
                 </div>
-                `);
+                <div class="py-1 min-h-[9rem] break-words">
+                </div>
+            </div>
+            `);
             } else {
-                output.push(`
-                <div class="weekend col-span-1 border border-slate-300 bg-slate-100 rounded-md overflow-hidden">
-                    <div class="p-1 bg-slate-100 text-gray-300">
-                        <div class="w-8 h-8 m-1 pt-0.5 truncate text-2xl text-center font-medium rounded-full">   
-                            ${dayFormat}
-                        </div>
-                    </div>
-                    <div class="py-1 min-h-[9rem] break-words">
-                    </div>
-                </div>
-                `);
-            }
-        } else {
             output.push(
             current?
                 `
