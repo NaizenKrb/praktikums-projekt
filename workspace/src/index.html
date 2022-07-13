@@ -64,8 +64,12 @@
         </button>
       </div>
       <div class="hidden md:ml-4 md:flex md:items-center">
-        <div class="ml-6 h-6 w-px bg-gray-300"></div>
         <button type="button" class="addEvent focus:outline-none ml-6 rounded-md border border-transparent bg-netzfactor py-2 px-4 text-sm font-medium text-white shadow-md hover:bg-netzfactor-light focus:ring-2 focus:ring-netzfactor focus:ring-offset-2">Event Hinzufügen</button>
+        <div class="ml-6 h-6 w-px bg-gray-300"></div>
+        <button class="flex -space-x-1 overflow-hidden">
+          <img class="ml-6 h-11 w-11 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+        </button>
+        <button id="logout" onClick="window.location.href='/src/login.html'" type="button" class="hidden focus:outline-none ml-6 rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white shadow-md hover:bg-netzfactor-light focus:ring-2 focus:ring-netzfactor focus:ring-offset-2">Ausloggen</button>
       </div>
       <div class="relative ml-6 md:hidden buttoncontainer">
         <button type="button" class="viewButton shadow-md -mx-2 flex items-center rounded-md border border-gray-300 p-2 text-gray-400 hover:text-gray-500" id="menu-0-button" aria-expanded="false" aria-haspopup="true">
