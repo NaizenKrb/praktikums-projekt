@@ -465,9 +465,7 @@ function placeDays(monthIndex, year) {
                         entry.classList.remove("border-netzfactor");
                     }
             });
-        });
-        
-        
+        }); 
     });
 }
 
