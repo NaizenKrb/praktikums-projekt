@@ -33,6 +33,9 @@
         background: #0068AD;
       }
       </style>
+      <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+      </script>
 </head>
 <body class="scrollbar bg-slate-50">
 
@@ -96,15 +99,152 @@
           <div class="py-1" role="none">
             <a href="#" class="thisMonth text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-1">Gehe zu Heute</a>
           </div>
-          <div class="py-1" role="none">
-            <a href="/src/login.html-" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-0-item-2">Ausloggen</a>
         </div>
-      </div>
     </div>
   </header>
 
-  <main class="w-full">
+  <main class="w-full flex flex-col">
+    <div class="w-full border-b border-slate-200 flex py-4">
+        <canvas id="myChart" class="w-full h-full max-w-[700px] mx-auto"></canvas>
+    </div>
+    <div class="w-full border-b border-slate-200 py-4 grid grid-cols-4 gap-2">
+        <div id="tableMedia" class="w-full bg-white mx-2 border shadow-md rounded-md overflow-hidden">
+            <div id="tableHeader" class="bg-slate-50 grid grid-cols-2 border-b text-center font-bold text-slate-600">
+                <div class="col-span-2 border-b text-slate-50 text-xl bg-media">Media</div>
+                <div class="py-1 px-2 border-r">Name</div>
+                <div class="py-1 px-2 border-r">Status</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+        </div>
+        <div id="tableWeb" class="w-full bg-white mx-2 border shadow-md rounded-md overflow-hidden">
+            <div id="tableHeader" class="bg-slate-50 grid grid-cols-2 border-b text-center font-bold text-slate-600">
+                <div class="col-span-2 border-b text-slate-700 text-xl bg-web">Web</div>
+                <div class="py-1 px-2 border-r">Name</div>
+                <div class="py-1 px-2 border-r">Status</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+        </div>
+        <div id="tableMedia" class="w-full bg-white mx-2 border shadow-md rounded-md overflow-hidden">
+            <div id="tableHeader" class="bg-slate-50 grid grid-cols-2 border-b text-center font-bold text-slate-600">
+                <div class="col-span-2 border-b text-slate-700 text-xl bg-app">App</div>
+                <div class="py-1 px-2 border-r">Name</div>
+                <div class="py-1 px-2 border-r">Status</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+        </div>
+        <div id="tableNetwork" class="w-full4 bg-white mx-2 border shadow-md rounded-md overflow-hidden">
+            <div id="tableHeader" class="bg-slate-50 grid grid-cols-2 border-b text-center font-bold text-slate-600">
+                <div class="col-span-2 border-b text-slate-50 text-xl bg-network">Network</div>
+                <div class="py-1 px-2 border-r">Name</div>
+                <div class="py-1 px-2 border-r">Status</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+            <div id="tablecontent" class="grid grid-cols-2 border-b text-center font-medium text-slate-500">
+                <div class="py-1 px-2 border-r ">Niclas</div>
+                <div class="py-1 px-2 border-r">Verfübar</div>
+            </div>
+        </div>
+    </div>
     
+    <script>
+        const departments = ["Media", "App", "Web", "Network"]
+        const workers = [4, 5, 5, 7]
+        const colors = ["#ce4c34", "#e8bb40", "#00b0e6", "#08865f"]
+
+        new Chart("myChart", {
+            type: 'doughnut',
+            data: {
+                labels: departments,
+                datasets: [{
+                    backgroundColor: colors,
+                    data: workers
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Mitarbeiter pro Abteilung',
+                    fontSize: 30
+                }
+            }
+        })
+    </script>
   </main>
 
 </body>
